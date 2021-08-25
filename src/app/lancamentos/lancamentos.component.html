@@ -1,0 +1,75 @@
+<div class="container">
+<div class="p-grid">
+    <div class="p-col-12">
+        <H1>Controle de Pendências</H1>
+    </div>
+
+    <!-- fluid: ocupar a class -->
+    <div class="p-col-12 p-fluid"> 
+        <label>Descrição: </label>
+        <input type="text" pInputText />
+    </div>
+
+    <div class="p-col-12">
+        <label style="display: block">Vencimento: </label>
+        <input pInputText type="text" style="width: 95px">
+  
+        <label> até </label>
+        <input pInputText type="text" style="width: 95px">
+
+    </div>
+
+    <div class="p-col-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+    
+</div>
+<br>
+
+
+ 
+
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-card>
+        <p-table  [value]="lancamentos" [paginator]="true" [rows]="4">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Pessoa</th>
+                    <th>Descrição</th>
+                    <th class="col-data-header">Vencimento</th>
+                    <th class="col-data-header">Pagamento</th>
+                    <th class="col-valor-header">Valor</th>
+                    <th class="col-acoes-header"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-lancamento>
+                <tr>
+                    <td>{{ lancamento.pessoa }}</td>
+                    <td>{{ lancamento.descricao }}</td>
+                    <td class="col-data-content">{{ lancamento.dataVencimento }}</td>
+                    <td class="col-data-content">{{ lancamento.dataPagamento }}</td>
+                    <td class="col-valor" [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">{{ lancamento.valor }}</td>
+                    <td class="col-acoes">
+                        <button pButton icon="pi pi-pencil"  pTooltip="Editar" tooltipPosition="top"></button>
+                        <button pButton icon="pi pi-trash"  pTooltip="Excluir" tooltipPosition="top"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </p-card>
+
+
+    </div>
+
+    <div class="p-col-12">
+        <button pButton type="submit" label="Cadastrar"></button>
+      </div>
+  
+</div>
+
+
+
+
+</div>
