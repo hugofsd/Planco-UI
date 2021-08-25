@@ -15,13 +15,15 @@ import {InputTextModule} from 'primeng/inputtext';
 import {TableModule} from 'primeng/table';
 import {TooltipModule} from 'primeng/tooltip';
 import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
+import { NavegacaoComponent } from './navegacao/navegacao.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LancamentosComponent,
-    LancamentosCadastroComponent
+    LancamentosCadastroComponent,
+    NavegacaoComponent
   ],
   imports: [
     BrowserModule,
