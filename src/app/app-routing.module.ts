@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
 import { LancamentosComponent } from './lancamentos/lancamentos.component';
+import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { PessoaComponent } from './pessoa/pessoa.component';
 
 const routes: Routes = [
@@ -11,6 +12,12 @@ const routes: Routes = [
   {path: 'lancamentosCadastro', component: LancamentosCadastroComponent },
   
   {path: 'pessoas', component: PessoaComponent },
+
+  {path: 'pessoasCadastro', component: PessoaCadastroComponent },
+
+
+
+  
 
   
 

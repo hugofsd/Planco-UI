@@ -1,8 +1,13 @@
 <div class="container">
     <div class="p-grid">
+
+
+
         <div class="p-col-12">
-            <H1>Cadastro de Pendências</H1>
+            <H1>Nova Pendência</H1>
         </div>
+
+        <p-card>
 
         <div class="p-grid">
 
@@ -10,34 +15,32 @@
                 <p-selectButton [options]="tipos" #tipo></p-selectButton>
             </div>
 
-          
-      <div class="p-col-6 p-md-3 p-fluid">
-        <label>Vencimento</label>
-        <p-calendar dateFormat="dd/mm/yy"
-          [inline]="false" [readonlyInput]="false"
-          [showIcon]="false"></p-calendar>
-      </div>
-      <div class="p-col-6 p-md-3 p-fluid">
-        <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
-        <p-calendar dateFormat="dd/mm/yy"></p-calendar>
-      </div>
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Descrição</label>
-        <input pInputText type="text">
-      </div>
-      <div class="p-col-12 p-md-3 p-fluid">
-        <label>Valor</label>
-        <input pInputText type="text" placeholder="0,00" currencyMask
-          [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }">
-      </div>
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Categoria</label>
-        <p-dropdown [options]="categorias" placeholder="Selecione"></p-dropdown>
-      </div>
+
+            <div class="p-col-6 p-md-3 p-fluid">
+                <label>Vencimento</label>
+                <p-calendar dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="false">
+                </p-calendar>
+            </div>
+            <div class="p-col-6 p-md-3 p-fluid">
+                <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
+                <p-calendar dateFormat="dd/mm/yy"></p-calendar>
+            </div>
+            <div class="p-col-12 p-md-9 p-fluid">
+                <label>Descrição</label>
+                <input pInputText type="text">
+            </div>
+            <div class="p-col-12 p-md-3 p-fluid">
+                <label>Valor</label>
+                <input pInputText type="text" placeholder="0,00" currencyMask
+                    [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }">
+            </div>
+            <div class="p-col-12 p-md-6 p-fluid">
+                <label>Categoria</label>
+                <p-dropdown [options]="categorias" placeholder="Selecione"></p-dropdown>
+            </div>
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Pessoa</label>
-                <p-dropdown [options]="pessoas" placeholder="Selecione"
-                [filter]="true" #pessoa></p-dropdown> 
+                <p-dropdown [options]="pessoas" placeholder="Selecione" [filter]="true" #pessoa></p-dropdown>
                 <!-- com filtro de palavras -->
             </div>
             <div class="p-col-12 p-fluid">
@@ -48,5 +51,6 @@
             <button pButton type="button" label="Novo" class="p-button-info"></button>
             <!-- <a href="javascript:;">Voltar para a pesquisa</a> -->
         </div>
+    </p-card>
     </div>
 </div>
