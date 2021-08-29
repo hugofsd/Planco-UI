@@ -10,28 +10,30 @@
                 <p-selectButton [options]="tipos" #tipo></p-selectButton>
             </div>
 
-            <div class="p-col-6 p-md-3 p-fluid">
-                <label>Vencimento</label>
-                <p-calendar dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="false">
-                </p-calendar>
-            </div>
-            <div class="p-col-6 p-md-3 p-fluid">
-                <label>Recebimento</label>
-                <input pInputText type="text">
-            </div>
-            <div class="p-col-12 p-md-9 p-fluid">
-                <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
-                <p-calendar dateFormat="dd/mm/yy"></p-calendar>
-            </div>
-            <div class="p-col-12 p-md-3 p-fluid">
-                <label>Valor</label>
-                <input pInputText type="text" placeholder="0,00">
-            </div>
-            <div class="p-col-12 p-md-6 p-fluid">
-                <label>Categoria</label>
-                <p-dropdown [options]="categorias" placeholder="Selecione"
-                #categoria></p-dropdown>
-            </div>
+          
+      <div class="p-col-6 p-md-3 p-fluid">
+        <label>Vencimento</label>
+        <p-calendar dateFormat="dd/mm/yy"
+          [inline]="false" [readonlyInput]="false"
+          [showIcon]="false"></p-calendar>
+      </div>
+      <div class="p-col-6 p-md-3 p-fluid">
+        <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
+        <p-calendar dateFormat="dd/mm/yy"></p-calendar>
+      </div>
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Descrição</label>
+        <input pInputText type="text">
+      </div>
+      <div class="p-col-12 p-md-3 p-fluid">
+        <label>Valor</label>
+        <input pInputText type="text" placeholder="0,00" currencyMask
+          [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }">
+      </div>
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Categoria</label>
+        <p-dropdown [options]="categorias" placeholder="Selecione"></p-dropdown>
+      </div>
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Pessoa</label>
                 <p-dropdown [options]="pessoas" placeholder="Selecione"
