@@ -23,6 +23,9 @@ import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
+import { InputMaskModule } from 'primeng/inputmask';
+import { MensagemComponent } from './mensagem/mensagem.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
     LancamentosCadastroComponent,
     NavegacaoComponent,
     PessoaComponent,
-    PessoaCadastroComponent
+    PessoaCadastroComponent,
+    MensagemComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +50,11 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
     SelectButtonModule,
     CalendarModule,
     DropdownModule,
+    InputMaskModule,
+    FormsModule,
+
+
+
     CurrencyMaskModule
   
   ],

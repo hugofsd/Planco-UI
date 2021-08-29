@@ -1,5 +1,10 @@
 <div class="container">
-    <div class="p-grid">
+
+    <form autocomplete="off"
+    
+    >
+    <div class="p-grid"
+    href="javascript:;" [pTooltip]="'Vencimento e descrição obrigatórios'" tooltipPosition="bottom">
 
 
 
@@ -14,11 +19,13 @@
             <div class="p-col-12">
                 <p-selectButton [options]="tipos" #tipo></p-selectButton>
             </div>
-
+ 
 
             <div class="p-col-6 p-md-3 p-fluid">
                 <label>Vencimento</label>
-                <p-calendar dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="false">
+                <p-calendar dateFormat="dd/mm/yy"
+                href="javascript:;" [pTooltip]="'OBRIGRATÓRIO'" tooltipPosition="top"
+                 [inline]="false" [readonlyInput]="false" [showIcon]="false">
                 </p-calendar>
             </div>
             <div class="p-col-6 p-md-3 p-fluid">
@@ -27,7 +34,9 @@
             </div>
             <div class="p-col-12 p-md-9 p-fluid">
                 <label>Descrição</label>
-                <input pInputText type="text">
+                <input pInputText type="text" name="descricao"
+                  ngModel #descricao="ngModel" required minlength="5">
+               
             </div>
             <div class="p-col-12 p-md-3 p-fluid">
                 <label>Valor</label>
@@ -53,4 +62,5 @@
         </div>
     </p-card>
     </div>
+</form>
 </div>
