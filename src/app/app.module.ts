@@ -17,7 +17,10 @@ import {TooltipModule} from 'primeng/tooltip';
 import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
 import { NavegacaoComponent } from './navegacao/navegacao.component';
 import { PessoaComponent } from './pessoa/pessoa.component';
-
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,11 @@ import { PessoaComponent } from './pessoa/pessoa.component';
     CardModule,
     InputTextModule,
     TableModule,
-    TooltipModule
+    TooltipModule,
+    InputTextareaModule,
+    SelectButtonModule,
+    CalendarModule,
+    DropdownModule
     
   ],
   providers: [],
