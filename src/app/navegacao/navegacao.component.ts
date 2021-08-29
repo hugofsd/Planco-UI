@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavegacaoComponent implements OnInit {
 
-  exibindoMenu = false;
+  exibindoMenu = true;
   constructor() { }
 
   ngOnInit(): void {

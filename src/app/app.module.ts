@@ -16,6 +16,7 @@ import {TableModule} from 'primeng/table';
 import {TooltipModule} from 'primeng/tooltip';
 import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
 import { NavegacaoComponent } from './navegacao/navegacao.component';
+import { PessoaComponent } from './pessoa/pessoa.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NavegacaoComponent } from './navegacao/navegacao.component';
     AppComponent,
     LancamentosComponent,
     LancamentosCadastroComponent,
-    NavegacaoComponent
+    NavegacaoComponent,
+    PessoaComponent
   ],
   imports: [
     BrowserModule,
