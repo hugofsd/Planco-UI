@@ -1,7 +1,7 @@
 
 .navbar {
     padding: 20px 0 10px;
-    background-color: #673AB7;
+    background-color: #4B1A75;
   }
   
   .navbar-toggle {
@@ -45,3 +45,12 @@
   .navbar-menuitem a:hover {
     color: #fff;
   }
+
+  .logo {
+  float: left;
+  display: block;
+  height: 50px;
+  font-size: 1.25em;
+  padding: 8px;
+  text-align: center;
+}

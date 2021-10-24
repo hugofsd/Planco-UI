@@ -1,20 +1,33 @@
+
 <nav class="navbar">
 
+
+ 
+  
+
     <div class="container">
+
+     
       <div class="p-grid">
         <div class="p-col-12">
           <a href="javascript:;"  (click)="exibindoMenu = !exibindoMenu"
           class="navbar-toggle"><i class="pi pi-bars"></i></a>
+
+          
         </div>
-  
       </div>
   
+      
     </div>
 
     <ul class="navbar-menu" [hidden]="!exibindoMenu">
-        <li class="navbar-usuario">Hugo França</li>
-        <li class="navbar-menuitem" ><a href="#">Deshboard</a></li>
+      <img src="../../assets/logoBranco.png"  href="#" class="navbar-menuitem"  layout-align="center" style="width: 105px; Height: 105px "  flex="70">
+      <br> 
+       <!-- <li class="navbar-usuario">Hugo França</li> -->   
+       <!-- <li ><a >Home</a></li> -->
+      
         <!-- Pendências = lancamentos -->
+        <li class="navbar-menuitem"><a href="#">Página inical</a></li>
         <li class="navbar-menuitem"><a routerLink="lancamentos">Pendências</a></li>
         <li class="navbar-menuitem"><a routerLink="lancamentosCadastro">Nova pendência</a></li>
         <li class="navbar-menuitem"><a routerLink="pessoas">Clientes</a></li>
@@ -26,8 +39,10 @@
         <li class="navbar-menuitem"><a href="#">Novo fornecedor</a></li>
         <li class="navbar-menuitem"><a href="#">Relatórios</a></li>
         <li class="navbar-menuitem"><a href="#">Configurações</a></li>
-        <li class="navbar-menuitem"><a href="#">Suporte</a></li>
         <li class="navbar-menuitem"><a href="#">Sair</a></li>
       </ul>
   
+
+   
   </nav>
+  

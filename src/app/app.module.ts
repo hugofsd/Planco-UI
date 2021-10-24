@@ -26,7 +26,7 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
 import { InputMaskModule } from 'primeng/inputmask';
 import { MensagemComponent } from './mensagem/mensagem.component';
 import { FormsModule } from '@angular/forms';
-
+import {MenuModule} from 'primeng/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +52,7 @@ import { FormsModule } from '@angular/forms';
     DropdownModule,
     InputMaskModule,
     FormsModule,
+    MenuModule,
 
 
 
