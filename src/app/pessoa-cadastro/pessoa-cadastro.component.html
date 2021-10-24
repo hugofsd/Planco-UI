@@ -18,6 +18,16 @@
               >Nome completo </label>
               <input pInputText type="text" name="nome"
               ngModel #nome="ngModel" required minlength="5">
+
+            <span *ngIf="nome.hasError('required') && nome.dirty"
+              class="p-message p-message-error">
+              Informe um nome.
+            </span>
+            <span *ngIf="nome.hasError('minlength') && nome.dirty"
+              class="p-message p-message-error">
+              Mínimo de {{ nome.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ nome.errors?.minlength.actualLength }}
+            </span>
+
             </div>
       
             <div class="p-col-12 p-md-9 p-fluid">
@@ -25,6 +35,16 @@
               <input pInputText type="text"
               name="logradouro"
               ngModel #logradouro="ngModel" required minlength="5">
+
+
+            <span *ngIf="nome.hasError('required') && nome.dirty"
+              class="p-message p-message-error">
+              Informe o logradouro.
+            </span>
+            <span *ngIf="logradouro.hasError('minlength') && logradouro.dirty"
+              class="p-message p-message-error">
+              Mínimo de {{ logradouro.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ logradouro.errors?.minlength.actualLength }}
+            </span>
             
             </div>
       
@@ -32,9 +52,17 @@
               <label>Número</label>
               <input pInputText type="text"
               name="numero"
-              ngModel #numero="ngModel" required minlength="1"
-             
-              >
+              ngModel #numero="ngModel" required minlength="1">
+
+            <span *ngIf="numero.hasError('required') && numero.dirty"
+              class="p-message p-message-error">
+              Informe o numero.
+            </span>
+            <span *ngIf="numero.hasError('minlength') && numero.dirty"
+              class="p-message p-message-error">
+              Mínimo de {{ numero.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ numero.errors?.minlength.actualLength }}
+            </span>
+
             </div>
       
             <div class="p-col-12 p-md-4 p-fluid">
@@ -50,13 +78,31 @@
               name="bairro"
               ngModel #bairro="ngModel" required minlength="4"
               >
+
+              <span *ngIf="bairro.hasError('required') && bairro.dirty"
+              class="p-message p-message-error">
+              Informe o bairro.
+            </span>
+            <span *ngIf="bairro.hasError('minlength') && bairro.dirty"
+              class="p-message p-message-error">
+              Mínimo de {{ bairro.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ bairro.errors?.minlength.actualLength }}
+            </span>
+
             </div>
       
             <div class="p-col-12 p-md-4 p-fluid">
               <label>CEP</label>
               <p-inputMask mask="99.999-999"
-             
+              name="cep"
+              ngModel #cep="ngModel" [required]="true"
               ></p-inputMask>
+
+
+              <span *ngIf="cep.hasError('required') && cep.dirty"
+              class="p-message p-message-error">
+              Informe o cep.
+            </span>
+        
             </div>
       
             <div class="p-col-12 p-md-6 p-fluid">
@@ -66,6 +112,15 @@
               name="cidade"
               ngModel #cidade="ngModel" required minlength="5"
               >
+
+              <span *ngIf="cidade.hasError('required') && cidade.dirty"
+              class="p-message p-message-error">
+              Informe o cidade.
+            </span>
+            <span *ngIf="cidade.hasError('minlength') && cidade.dirty"
+              class="p-message p-message-error">
+              Mínimo de {{ cidade.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ cidade.errors?.minlength.actualLength }}
+            </span>
             </div>
       
             <div class="p-col-12 p-md-6 p-fluid">
@@ -74,6 +129,15 @@
               name="estado"
               ngModel #estado="ngModel" required minlength="5"
               >
+
+              <span *ngIf="estado.hasError('required') && estado.dirty"
+              class="p-message p-message-error">
+              Informe o estado.
+            </span>
+            <span *ngIf="estado.hasError('minlength') && estado.dirty"
+              class="p-message p-message-error">
+              Mínimo de {{ estado.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ estado.errors?.minlength.actualLength }}
+            </span>
             </div>
       
             <div class="p-col-12">
