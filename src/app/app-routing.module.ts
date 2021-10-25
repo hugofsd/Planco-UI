@@ -4,6 +4,8 @@ import { PessoaCadastroComponent } from './clientes/pessoa-cadastro/pessoa-cadas
 import { PessoaComponent } from './clientes/pessoa/pessoa.component';
 import { LancamentoListaComponent } from './lancamentos/lancamento/lancamentos.component';
 import { LancamentosCadastroComponent } from './lancamentos/lancamentos-cadastro/lancamentos-cadastro.component';
+import { ControleVendasComponent } from './vendas/controle-vendas/controle-vendas.component';
+import { NovaVendaComponent } from './vendas/nova-venda/nova-venda.component';
 
 
 
@@ -17,14 +19,9 @@ const routes: Routes = [
 
   {path: 'pessoasCadastro', component: PessoaCadastroComponent },
 
+  {path: 'novaVenda', component: NovaVendaComponent },
 
-
-  
-
-  
-
-  
-  
+  {path: 'controleVenda', component: ControleVendasComponent },
 
 ];
 

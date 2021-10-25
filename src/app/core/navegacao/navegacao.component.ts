@@ -24,12 +24,19 @@ export class NavegacaoComponent implements OnInit {
     this.router.navigate(['lancamentosCadastro']);
   }
 
-
   clienteLista(){
     this.router.navigate(['pessoas']);
   }
   clienteCadastro(){
     this.router.navigate(['pessoasCadastro']);
+  }
+
+  novaVenda(){
+    this.router.navigate(['novaVenda']);
+  }
+
+  controleVenda(){
+    this.router.navigate(['controleVenda']);
   }
 
 }
