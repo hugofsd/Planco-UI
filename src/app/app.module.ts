@@ -9,54 +9,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 //imports primeng
-import {CardModule} from 'primeng/card';
-import { LancamentosComponent } from './lancamentos/lancamentos.component';
-import {InputTextModule} from 'primeng/inputtext';
-import {TableModule} from 'primeng/table';
-import {TooltipModule} from 'primeng/tooltip';
-import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
-import { NavegacaoComponent } from './navegacao/navegacao.component';
-import { PessoaComponent } from './pessoa/pessoa.component';
-import { InputTextareaModule } from 'primeng/inputtextarea';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import { CalendarModule } from 'primeng/calendar';
-import { DropdownModule } from 'primeng/dropdown';
-import { CurrencyMaskModule } from 'ng2-currency-mask';
-import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
-import { InputMaskModule } from 'primeng/inputmask';
-import { MensagemComponent } from './mensagem/mensagem.component';
-import { FormsModule } from '@angular/forms';
+import { NavegacaoComponent } from './core/navegacao/navegacao.component';
 import {MenuModule} from 'primeng/menu';
+import { LancamentosModule } from './lancamentos/lancamentos.module';
+import { ClientesModule } from './clientes/clientes.module';
+import { CoreModule } from './core/core.module';
+
 @NgModule({
   declarations: [
     AppComponent,
-    LancamentosComponent,
-    LancamentosCadastroComponent,
-    NavegacaoComponent,
-    PessoaComponent,
-    PessoaCadastroComponent,
-    MensagemComponent
+
   ],
   imports: [
+
+    //modulos
+    LancamentosModule,
+    ClientesModule,
+    CoreModule,
+    // outros imports
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ButtonModule,
-    CardModule,
-    InputTextModule,
-    TableModule,
-    TooltipModule,
-    InputTextareaModule,
-    SelectButtonModule,
-    CalendarModule,
-    DropdownModule,
-    InputMaskModule,
-    FormsModule,
     MenuModule,
-
-
-
-    CurrencyMaskModule
   
   ],
   providers: [],
