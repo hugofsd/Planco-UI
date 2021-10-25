@@ -2,14 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavegacaoComponent } from './navegacao/navegacao.component';
 
-
-
 @NgModule({
   declarations: [
     NavegacaoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     NavegacaoComponent

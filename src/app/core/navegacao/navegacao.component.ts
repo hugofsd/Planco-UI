@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navegacao',
@@ -8,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 export class NavegacaoComponent implements OnInit {
 
   exibindoMenu = false;
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  pendenciaLista(){
+    this.router.navigate(['lancamentos']);
+  }
+
+  pendenciaCadastro(){
+    this.router.navigate(['lancamentosCadastro']);
+  }
+
+
+  clienteLista(){
+    this.router.navigate(['pessoas']);
+  }
+  clienteCadastro(){
+    this.router.navigate(['pessoasCadastro']);
   }
 
 }

@@ -26,11 +26,11 @@ import { CoreModule } from './core/core.module';
     LancamentosModule,
     ClientesModule,
     CoreModule,
+    
     // outros imports
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MenuModule,
   
   ],
   providers: [],
