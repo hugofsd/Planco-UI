@@ -8,10 +8,12 @@ import { LancamentosService, LancamentoFiltro } from '../lancamentos.service';
 })
 export class LancamentoListaComponent implements OnInit {
 
-  descricao: string = '';
+  // descricao: string = '';
   lancamentos: any[] = [] ;
-  dataVencimentoInicio?: Date ;
-  dataVencimentoFim?: Date;
+  // dataVencimentoInicio?: Date ;
+  // dataVencimentoFim?: Date;
+
+  filtro = new LancamentoFiltro
 
 
   // filtro = {
@@ -27,14 +29,9 @@ export class LancamentoListaComponent implements OnInit {
 
  pesquisar (){
 
-  const filtro: LancamentoFiltro = {
-    descricao: this.descricao,      
-    dataVencimentoInicio: this.dataVencimentoInicio ,
-    dataVencimentoFim: this.dataVencimentoFim
-  }   
-  
-   console.log(this.descricao);
-   this.lancamentoService.pesquisar(filtro).subscribe(data  =>{
+
+   console.log(this.filtro);
+   this.lancamentoService.pesquisar(this.filtro).subscribe(data  =>{
      this.lancamentos = data.content;
      console.log(this.lancamentos);
    })
