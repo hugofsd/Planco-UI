@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NavegacaoComponent } from './navegacao/navegacao.component';
 
 @NgModule({
@@ -11,6 +11,10 @@ import { NavegacaoComponent } from './navegacao/navegacao.component';
   ],
   exports: [
     NavegacaoComponent
+  ],
+  providers: [
+    DatePipe,
+    {provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
 
