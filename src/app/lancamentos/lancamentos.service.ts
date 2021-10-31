@@ -8,8 +8,8 @@ export class LancamentoFiltro {
   descricao?: string;
   dataVencimentoInicio?: Date;
   dataVencimentoFim?: Date;
- // pagina = 1;
- // itensPorPagina = 2;
+  pagina = 1;
+  itensPorPagina = 2;
 }
 
 @Injectable({
@@ -26,8 +26,8 @@ export class LancamentosService {
 
   pesquisar(filtro: LancamentoFiltro): Observable<any> {
     let params = new HttpParams()
-    //.set('page', filtro.pagina.toString()) // paga paginação
-  //  .set('size', filtro.itensPorPagina.toString()); // para paginação
+    .set('page', filtro.pagina.toString()) // paga paginação
+    .set('size', filtro.itensPorPagina.toString()); // para paginação
 
 
     //if para filtro por descrição e data
