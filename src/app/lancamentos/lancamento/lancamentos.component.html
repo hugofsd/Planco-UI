@@ -1,7 +1,9 @@
 
  
 <div class="container">
-    
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+
+  
 <div class="p-grid">
    
     <div class="p-col-12">
@@ -11,7 +13,8 @@
     <!-- fluid: ocupar a class -->
     <div class="p-col-12 p-fluid"> 
         <label>Descrição: </label>
-        <input type="text" pInputText />
+        <input  pInputText type="text" name="descricao" 
+        [(ngModel)]="descricao"/>
     </div>
 
     <div class="p-col-12">
@@ -35,13 +38,14 @@
 </div>
 <br>
 
-
+</form>
  
 
 <div class="p-grid">
     <div class="p-col-12">
         
-        <p-table  [value]="lancamentos" [paginator]="true" [rows]="2">
+        <p-table  [value]="lancamentos" [paginator]="true" [rows]="2"
+        [responsive]="true">
             <ng-template pTemplate="header">
                 <tr>
                     <th>Pessoa</th>
@@ -54,7 +58,7 @@
             </ng-template>
             <ng-template pTemplate="body" let-lancamento>
                 <tr>
-                    <td>{{ lancamento.pessoa }}</td>
+                    <td>{{ lancamento.pessoa.nome }}</td>
                     <td>{{ lancamento.descricao }}</td>
                     <td class="col-data-content">{{ lancamento.dataVencimento }}</td>
                     <td class="col-data-content">{{ lancamento.dataPagamento }}</td>
