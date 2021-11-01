@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PessoaFiltro, PessoasService } from '../pessoas.service';
 
 @Component({
   selector: 'app-pessoa',
@@ -7,18 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PessoaComponent implements OnInit {
 
-  constructor() { }
+  pessoas: any[] = [];
+
+  filtro = new PessoaFiltro()
+
+  constructor(
+    private pessoaService: PessoasService
+  ) { }
 
   ngOnInit(): void {
+    this.pesquisar();
   }
 
-  pessoas = [
-    { nome: 'Manoel Pinheiro', cidade: 'Uberlândia', estado: 'MG', ativo: true },
-    { nome: 'Sebastião da Silva', cidade: 'São Paulo', estado: 'SP', ativo: false },
-    { nome: 'Carla Souza', cidade: 'Florianópolis', estado: 'SC', ativo: true },
-    { nome: 'Luís Pereira', cidade: 'Curitiba', estado: 'PR', ativo: true },
-    { nome: 'Vilmar Andrade', cidade: 'Rio de Janeiro', estado: 'RJ', ativo: false },
-    { nome: 'Paula Maria', cidade: 'Uberlândia', estado: 'MG', ativo: true }
-  ];
-  
+  pesquisar(){
+    //console.log(this.filtro);
+    this.pessoaService.pesquisar(this.filtro).subscribe(
+      data => {
+        this.pessoas = data;
+        console.log(this.pessoas);
+      }
+    )
+  }
 }

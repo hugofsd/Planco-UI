@@ -17,20 +17,21 @@ export class LancamentoFiltro {
 })
 export class LancamentosService {
 
-  
-  constructor(private http: HttpClient,
-    private datePipe: DatePipe) { }
+  constructor(
+    private http: HttpClient,
+    private datePipe: DatePipe
+    ) { }
 
  lancamentosUrl = 'http://localhost:8080/lancamentos';
+
+ private API = environment.apiurl;
 
 
   pesquisar(filtro: LancamentoFiltro): Observable<any> {
     let params = new HttpParams()
-   // .set('page', filtro.pagina.toString()) // paga paginação
-  //  .set('size', filtro.itensPorPagina.toString()); // para paginação
-
-
-    //if para filtro por descrição e data
+     // .set('page', filtro.pagina.toString()) // paga paginação
+     //  .set('size', filtro.itensPorPagina.toString()); // para paginação
+     //if para filtro por descrição e data
     if(filtro.descricao){ 
       params = params.set('descricao', filtro.descricao);
     }    
@@ -42,15 +43,12 @@ export class LancamentosService {
       params = params.set('DataVencimentoAte', this.datePipe.transform(filtro.dataVencimentoFim, 'yyyy-MM-dd')!);
     }
 
-    return this.http.get(`${this.lancamentosUrl}`,{params});
+    return this.http.get(`${this.API}/lancamentos`,{params});
   }
 
-  // pesquisasr(): Promise<any> {
-  //   // const headers = new HttpHeaders()
-  //   //   .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+  excluir(codigo: number): Observable<any> {
+    return this.http.delete(`${this.API}/lancamentos/${codigo}`);
+  }
 
-  //   return this.http.get(`${this.lancamentosUrl}`)
-  //     .toPromise()HMMMM
-  //     .then((response: any) => response['content']);
-  // }
+
 }

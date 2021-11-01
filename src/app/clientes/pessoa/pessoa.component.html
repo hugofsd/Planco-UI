@@ -1,25 +1,33 @@
 <div class="container">
+  <form autocomplete="off" (ngSubmit)="pesquisar()">
+
   <div class="p-grid">
+
     <div class="p-col-12">
       <H1>Controle de Clientes</H1>
     </div>
 
     <div class="p-col-12 p-fluid">
       <label>Nome: </label>
-      <input type="text" pInputText />
+      <input  pInputText type="text" name="nome" 
+      [(ngModel)]="filtro.nome"/>
     </div>
 
     <div class="p-col-12">
       <button pButton type="submit" label="Pesquisar"></button>
-    </div> <br>
+    </div>
+     <br>
+  </div>
+</form>
 
 
-    <p-card>
 
-
-      <div class="p-grid">
+  <div class="p-grid">
+  
+ 
         <div class="p-col-12">
-          <p-table [value]="pessoas" [paginator]="true" [rows]="2">
+          <p-table [value]="pessoas" [paginator]="true" [rows]="2"
+          [responsive]="true">
             <ng-template pTemplate="header">
               <tr>
                 <th>Nome</th>
@@ -36,10 +44,10 @@
                   {{ pessoa.nome }}
                 </td>
                 <td>
-                  {{ pessoa.cidade }}
+                  {{ pessoa.endereco.cidade }}
                 </td>
                 <td>
-                  {{ pessoa.estado }}
+                  {{ pessoa.endereco.estado }} 
                 </td>
                 <td>
                   <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top">
@@ -69,5 +77,12 @@
           <a pButton label="Nova Pessoa"></a>
         </div>
       </div>
-    </p-card>
+
+
+
+     
+    
+
+
   </div>
+
