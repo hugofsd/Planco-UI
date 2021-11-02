@@ -2,17 +2,12 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {ButtonModule} from 'primeng/button';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 
 //imports primeng
-import { NavegacaoComponent } from './core/navegacao/navegacao.component';
-import {MenuModule} from 'primeng/menu';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { ClientesModule } from './clientes/clientes.module';
 import { CoreModule } from './core/core.module';
@@ -21,6 +16,7 @@ import {ToastModule} from 'primeng/toast';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -42,7 +38,8 @@ import {ConfirmPopupModule} from 'primeng/confirmpopup';
     HttpClientModule,
     ToastModule,
     ConfirmDialogModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    ButtonModule
     
   
   ],

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LancamentosService, LancamentoFiltro } from '../lancamentos.service';
-import { MessageService, ConfirmationService, SelectItem } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { Table } from 'primeng/table';
 
 
