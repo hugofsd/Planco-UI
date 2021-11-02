@@ -20,6 +20,7 @@ export class LancamentoListaComponent implements OnInit {
   constructor(
     private lancamentoService: LancamentosService,
     private messageService: MessageService,
+    private confirmationService: ConfirmationService
     ) { }
 
   ngOnInit(): void {
@@ -46,9 +47,16 @@ export class LancamentoListaComponent implements OnInit {
 
       }
       this.messageService.add({ key: 'msg', severity: 'success', detail: 'Pendência excluído com sucesso!' })
-    });  
-    
-   
+    });   
+}
+
+confirmarExclusao(lancamento: any): void {
+  this.confirmationService.confirm({
+    message: 'Tem certeza que deseja excluir?',
+    accept: () => {
+        this.excluir(lancamento);
+    },
+  });
 }
   
  

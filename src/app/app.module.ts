@@ -18,6 +18,9 @@ import { ClientesModule } from './clientes/clientes.module';
 import { CoreModule } from './core/core.module';
 import { VendasModule } from './vendas/vendas.module';
 import {ToastModule} from 'primeng/toast';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
 
 @NgModule({
   declarations: [
@@ -38,11 +41,14 @@ import {ToastModule} from 'primeng/toast';
     AppRoutingModule,
     HttpClientModule,
     ToastModule,
+    ConfirmDialogModule,
+    ConfirmPopupModule
     
   
   ],
   providers: [
     MessageService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })
