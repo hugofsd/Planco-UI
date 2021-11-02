@@ -33,6 +33,12 @@ export class PessoasService {
   excluir(codigo: number): Observable<any> {
     return this.http.delete(`${this.API}/pessoas/${codigo}`);
   }
+
+
+  mudarStatus(codigo: number, ativo: boolean):  Promise<void> {
+    return this.http.put<void>(`${this.API}/pessoas/${codigo}/ativo`, ativo)
+    .toPromise();
+  }
   
 }
 

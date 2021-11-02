@@ -3,7 +3,6 @@ import { PessoaFiltro, PessoasService } from '../pessoas.service';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { Table } from 'primeng/table';
 
-
 @Component({
   selector: 'app-pessoa',
   templateUrl: './pessoa.component.html',
@@ -38,29 +37,19 @@ export class PessoaComponent implements OnInit {
   }
 
   excluir(pessoa: any) {
-    
-   
       this.pessoaService.excluir(pessoa.codigo)
       .subscribe(() => {
         if (this.grid.first === 0) {
           this.pesquisar();
-        
         } else {
           this.grid.reset();
-  
         }
         this.messageService.add({ key: 'msg', severity: 'success', detail: 'Pendência excluído com sucesso!' })
       },
       error => {
         this.messageService.add({ key: 'msg', severity: 'error', detail: 'Cliente com vínculo!' })
-      }
-  
-      );   
-      
-   
-    
+      });   
   }
-
 
   confirmarExclusao(pessoa: any): void {
     this.confirmationService.confirm({
@@ -69,5 +58,22 @@ export class PessoaComponent implements OnInit {
           this.excluir(pessoa);
       },
     });
+  }
+
+  status(pessoa: any): void {
+    const novoStatus = !pessoa.ativo;
+
+    this.pessoaService.mudarStatus(pessoa.codigo, novoStatus)
+      .then(() => {
+        const acao = novoStatus ? 'ativada' : 'desativada';
+
+        pessoa.ativo = novoStatus;
+        this.messageService.add({ key: 'msg', severity: 'success', detail: `Pessoa ${acao} com sucesso!` });
+      
+      },
+      error => {
+        this.messageService.add({ key: 'msg', severity: 'error', detail: 'Ocorreu um erro!' })
+      });  
+      
   }
 }
