@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriasService } from 'src/app/categorias-produtos/categorias.service';
+import { PessoaFiltro, PessoasService } from 'src/app/clientes/pessoas.service';
 
 @Component({
   selector: 'app-lancamentos-cadastro',
@@ -7,26 +9,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LancamentosCadastroComponent implements OnInit {
 
+  categorias: any[] = [];
+
   tipos = [
     { label: 'Receita', value: 'RECEITA' },
     { label: 'Despesa', value: 'DESPESA' },
   ];
 
-  categorias = [
-    { label: 'Alimentação', value: 1 },
-    { label: 'Transporte', value: 2 },
-  ];
+  filtro = new PessoaFiltro()  
 
-  pessoas = [
-    { label: 'João da Silva', value: 4 },
-    { label: 'Sebastião Souza', value: 9 },
-    { label: 'Maria Abadia', value: 3 },
-  ];
+  pessoas: any[] = [];
 
 
-  constructor() { }
+  constructor(
+    private pessoaService: PessoasService,
+    private categoriaService: CategoriasService,
+  ) { }
 
   ngOnInit(): void {
+    this.carregarCategorias()
+    this.carregarClientes();
+  }
+
+
+  carregarCategorias() {
+
+    return this.categoriaService.listarCategorias()
+    .subscribe(categorias => {
+      this.categorias = categorias.map((c: any) => ({ label: c.name, value: c.codigo }));
+   console.log(categorias)
+
+   console.log(this.categorias)
+   
+    })
+  }
+
+  carregarClientes(){
+    //console.log(this.filtro);
+    this.pessoaService.pesquisar(this.filtro).subscribe(
+      data => {
+        this.pessoas = data.map((c: any) => ({ label: c.nome, value: c.codigo }));
+        console.log(this.pessoas);
+      }
+    )
   }
 
 }
