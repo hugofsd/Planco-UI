@@ -47,6 +47,9 @@ export class LancamentoListaComponent implements OnInit {
 
       }
       this.messageService.add({ key: 'msg', severity: 'success', detail: 'Pendência excluído com sucesso!' })
+    },
+    error => {
+      this.messageService.add({ key: 'msg', severity: 'error', detail: 'Erro ao excluir pendência!' })
     });   
 }
 
