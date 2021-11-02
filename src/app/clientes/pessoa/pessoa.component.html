@@ -24,10 +24,9 @@
 
   <div class="p-grid">
   
- 
         <div class="p-col-12">
           <p-table [value]="pessoas" [paginator]="true" [rows]="2"
-          [responsive]="true">
+          [responsive]="true" #tabela>
             <ng-template pTemplate="header">
               <tr>
                 <th>Nome</th>
@@ -57,7 +56,8 @@
                 <td class="col-acoes">
                   <span class="p-column-title"></span>
                   <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-                  <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+                  <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+                  (click)="confirmarExclusao(pessoa)"></button>
                 </td>
               </tr>
             </ng-template>

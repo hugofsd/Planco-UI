@@ -15,7 +15,7 @@ export class LancamentoListaComponent implements OnInit {
 
   filtro = new LancamentoFiltro()
 
-  @ViewChild('tabela') grid!: Table;
+  @ViewChild('tabela') grid!: Table; // para atualizar a tabela
 
   constructor(
     private lancamentoService: LancamentosService,

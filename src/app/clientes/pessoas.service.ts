@@ -18,7 +18,6 @@ export class PessoasService {
   
   constructor(
     private http: HttpClient,
-    private datePipe: DatePipe
   ) { }
 
   pesquisar(filtro: PessoaFiltro): Observable<any> {
@@ -29,6 +28,10 @@ export class PessoasService {
     }   
 
     return this.http.get<any>(`${this.API}/pessoas`,{params});
+  }
+
+  excluir(codigo: number): Observable<any> {
+    return this.http.delete(`${this.API}/pessoas/${codigo}`);
   }
   
 }
