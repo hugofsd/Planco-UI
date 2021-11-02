@@ -46,7 +46,7 @@
     <div class="p-col-12">
         
         <p-table  [value]="lancamentos" [paginator]="true" [rows]="2"
-        [responsive]="true">
+        [responsive]="true" #tabela>
             <ng-template pTemplate="header">
                 <tr>
                     <th>Pessoa</th>

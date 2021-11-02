@@ -8,6 +8,7 @@ import {ButtonModule} from 'primeng/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 //imports primeng
 import { NavegacaoComponent } from './core/navegacao/navegacao.component';
@@ -16,6 +17,7 @@ import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { ClientesModule } from './clientes/clientes.module';
 import { CoreModule } from './core/core.module';
 import { VendasModule } from './vendas/vendas.module';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -34,11 +36,14 @@ import { VendasModule } from './vendas/vendas.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule,
     
   
   ],
-  providers: [],
+  providers: [
+    MessageService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

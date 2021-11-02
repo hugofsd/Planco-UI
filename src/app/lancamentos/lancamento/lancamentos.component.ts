@@ -1,5 +1,8 @@
-import { Component, OnInit,   } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LancamentosService, LancamentoFiltro } from '../lancamentos.service';
+import { MessageService, ConfirmationService, SelectItem } from 'primeng/api';
+import { Table } from 'primeng/table';
+
 
 @Component({
   selector: 'app-lancamentos',
@@ -8,22 +11,15 @@ import { LancamentosService, LancamentoFiltro } from '../lancamentos.service';
 })
 export class LancamentoListaComponent implements OnInit {
 
-  // descricao: string = '';
   lancamentos: any[] = [] ;
-  // dataVencimentoInicio?: Date ;
-  // dataVencimentoFim?: Date;
 
   filtro = new LancamentoFiltro()
 
- 
-
-  // filtro = {
-  //   dataVencimentoFim: new Date(),
-  //   dataVencimentoInicio: new Date(),
-  // };
+  @ViewChild('tabela') grid!: Table;
 
   constructor(
-    private lancamentoService: LancamentosService
+    private lancamentoService: LancamentosService,
+    private messageService: MessageService,
     ) { }
 
   ngOnInit(): void {
@@ -34,6 +30,7 @@ export class LancamentoListaComponent implements OnInit {
    console.log(this.filtro);
    this.lancamentoService.pesquisar(this.filtro).subscribe(data  =>{
      this.lancamentos = data.content;
+     this.messageService.add({ severity: 'success', detail: 'Pendência excluído com sucesso!' })
      console.log(this.lancamentos);
    })
  }
@@ -41,11 +38,20 @@ export class LancamentoListaComponent implements OnInit {
  excluir(lancamento: any) {
   this.lancamentoService.excluir(lancamento.codigo)
     .subscribe(() => {
-      this.pesquisar();
-    });
+      if (this.grid.first === 0) {
+        this.pesquisar();
+      
+      } else {
+        this.grid.reset();
+
+      }
+      this.messageService.add({ key: 'msg', severity: 'success', detail: 'Pendência excluído com sucesso!' })
+    });  
+    
+   
 }
   
-
+ 
 
 }
  
