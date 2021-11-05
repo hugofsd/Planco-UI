@@ -8,16 +8,17 @@
 <p-card>
 
 
-    <form autocomplete="off">
+    <form #pessoasForm="ngForm" autocomplete="off" (ngSubmit)="cadastrar(pessoasForm)">
         <div class="p-grid"
         href="javascript:;" [pTooltip]="'Apenas o complemento não é obrigatório'" tooltipPosition="bottom"
         >
       
-            <div class="p-col-12 p-fluid">
+            <div class="p-col-6 p-fluid">
               <label 
               >Nome completo </label>
               <input pInputText type="text" name="nome"
-              ngModel #nome="ngModel" required minlength="5">
+              [(ngModel)]="pessoa.nome"
+              #nome="ngModel" required minlength="5">
 
             <span *ngIf="nome.hasError('required') && nome.dirty"
               class="p-message p-message-error">
@@ -29,18 +30,36 @@
             </span>
 
             </div>
+
+            <div class="p-col-6 p-fluid">
+              <label 
+              >E-mail </label>
+              <input pInputText type="text" name="email"
+              [(ngModel)]="pessoa.email"
+              #email="ngModel" required minlength="7">
+
+            <span *ngIf="email.hasError('required') && email.dirty"
+              class="p-message p-message-error">
+              Informe um e-mail.
+            </span>
+            <span *ngIf="email.hasError('minlength') && email.dirty"
+              class="p-message p-message-error">
+              Mínimo de {{ email.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ email.errors?.minlength.actualLength }}
+            </span>
+
+            </div>
+
       
             <div class="p-col-12 p-md-9 p-fluid">
               <label>Logradouro </label>
-              <input pInputText type="text"
-              name="logradouro"
-              ngModel #logradouro="ngModel" required minlength="5">
-
+              <input pInputText type="text" name="logradouro"
+              [(ngModel)]="pessoa.endereco.logradouro" #logradouro="ngModel" required minlength="5">
 
             <span *ngIf="logradouro.hasError('required') && logradouro.dirty"
               class="p-message p-message-error">
               Informe o logradouro.
             </span>
+
             <span *ngIf="logradouro.hasError('minlength') && logradouro.dirty"
               class="p-message p-message-error">
               Mínimo de {{ logradouro.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ logradouro.errors?.minlength.actualLength }}
@@ -51,13 +70,14 @@
             <div class="p-col-12 p-md-3 p-fluid">
               <label>Número</label>
               <input pInputText type="text"
-              name="numero"
+              name="numero"  [(ngModel)]="pessoa.endereco.numero"
               ngModel #numero="ngModel" required minlength="1">
 
             <span *ngIf="numero.hasError('required') && numero.dirty"
               class="p-message p-message-error">
               Informe o numero.
             </span>
+
             <span *ngIf="numero.hasError('minlength') && numero.dirty"
               class="p-message p-message-error">
               Mínimo de {{ numero.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ numero.errors?.minlength.actualLength }}
@@ -67,15 +87,16 @@
       
             <div class="p-col-12 p-md-4 p-fluid">
               <label>Complemento</label>
-              <input pInputText type="text"
+              <input pInputText type="text" name="complemento" 
+              [(ngModel)]="pessoa.endereco.complemento"
               >
             </div>
       
             <div class="p-col-12 p-md-4 p-fluid">
               <label>Bairro</label>
               <input pInputText type="text"
-            
               name="bairro"
+              [(ngModel)]="pessoa.endereco.bairro"
               ngModel #bairro="ngModel" required minlength="4"
               >
 
@@ -92,10 +113,9 @@
       
             <div class="p-col-12 p-md-4 p-fluid">
               <label>CEP</label>
-              <p-inputMask mask="99.999-999"
-              name="cep"
-              ngModel #cep="ngModel" [required]="true"
-              ></p-inputMask>
+              <input pInputText type="text"
+              name="cep"  [(ngModel)]="pessoa.endereco.cep"
+              ngModel #cep="ngModel" required minlength="1">
 
 
               <span *ngIf="cep.hasError('required') && cep.dirty"
@@ -108,7 +128,7 @@
             <div class="p-col-12 p-md-6 p-fluid">
               <label>Cidade</label>
               <input pInputText type="text"
-             
+              [(ngModel)]="pessoa.endereco.cidade"
               name="cidade"
               ngModel #cidade="ngModel" required minlength="5"
               >
@@ -126,8 +146,8 @@
             <div class="p-col-12 p-md-6 p-fluid">
               <label>Estado</label>
               <input pInputText type="text"
-              name="estado"
-              ngModel #estado="ngModel" required minlength="5"
+              name="estado" [(ngModel)]="pessoa.endereco.estado" 
+               #estado="ngModel" required minlength="5"
               >
 
               <span *ngIf="estado.hasError('required') && estado.dirty"

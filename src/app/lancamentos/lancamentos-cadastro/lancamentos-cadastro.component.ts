@@ -67,9 +67,9 @@ export class LancamentosCadastroComponent implements OnInit {
   cadastrar(form: NgForm){
     this.lancamentoService.adicionar(this.lancamento)
     .subscribe(() => {
-      this.messageService.add({ severity: 'success', detail: 'Pendência adicionado com sucesso!' });
       form.reset();
       this.lancamento = new Lancamento();
+      this.messageService.add({key: 'msg', severity: 'success', detail: 'Pendência cadastrada com sucesso com sucesso!' });
     },
     error => {
       this.messageService.add({ key: 'msg', severity: 'error', detail: 'Erro ao CADASTRAR pendência!' })
