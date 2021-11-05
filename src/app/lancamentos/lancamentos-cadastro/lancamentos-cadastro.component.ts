@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriasService } from 'src/app/categorias-produtos/categorias.service';
 import { PessoaFiltro, PessoasService } from 'src/app/clientes/pessoas.service';
-
+import { NgForm } from '@angular/forms';
+import { Lancamento } from 'src/app/core/model';
+import { LancamentosService } from '../lancamentos.service';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-lancamentos-cadastro',
   templateUrl: './lancamentos-cadastro.component.html',
@@ -16,14 +19,21 @@ export class LancamentosCadastroComponent implements OnInit {
     { label: 'Despesa', value: 'DESPESA' },
   ];
 
+
+
+
   filtro = new PessoaFiltro()  
 
   pessoas: any[] = [];
+
+  lancamento: Lancamento = new Lancamento();
 
 
   constructor(
     private pessoaService: PessoasService,
     private categoriaService: CategoriasService,
+    private lancamentoService: LancamentosService,    
+    private messageService: MessageService,
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +62,19 @@ export class LancamentosCadastroComponent implements OnInit {
         console.log(this.pessoas);
       }
     )
+  }
+
+  cadastrar(form: NgForm){
+    this.lancamentoService.adicionar(this.lancamento)
+    .subscribe(() => {
+      this.messageService.add({ severity: 'success', detail: 'Pendência adicionado com sucesso!' });
+      form.reset();
+      this.lancamento = new Lancamento();
+    },
+    error => {
+      this.messageService.add({ key: 'msg', severity: 'error', detail: 'Erro ao CADASTRAR pendência!' })
+    }); 
+
   }
 
 }

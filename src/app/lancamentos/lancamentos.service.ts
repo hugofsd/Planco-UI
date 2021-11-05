@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
+import { Lancamento } from '../core/model';
 
 export class LancamentoFiltro {
   descricao?: string;
@@ -27,6 +28,8 @@ export class LancamentosService {
  private API = environment.apiurl;
 
 
+ lancamento: Lancamento = new Lancamento();
+
   pesquisar(filtro: LancamentoFiltro): Observable<any> {
     let params = new HttpParams()
      // .set('page', filtro.pagina.toString()) // paga paginação
@@ -49,6 +52,13 @@ export class LancamentosService {
   excluir(codigo: number): Observable<any> {
     return this.http.delete(`${this.API}/lancamentos/${codigo}`);
   }
+   
+  adicionar(lancamento: Lancamento): Observable<Lancamento> {
+   
+    return this.http.post<Lancamento>(`${this.API}/lancamentos/`, lancamento);
+  
+  }
 
+  
 
 }

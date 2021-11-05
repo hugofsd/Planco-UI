@@ -1,6 +1,6 @@
 <div class="container">
 
-    <form autocomplete="off">
+    <form #lancamentoForm="ngForm" autocomplete="off" (ngSubmit)="cadastrar(lancamentoForm)">
     <div class="p-grid"
     href="javascript:;" [pTooltip]="'Vencimento e descrição obrigatórios'" tooltipPosition="bottom">
 
@@ -14,28 +14,33 @@
 
         <div class="p-grid">
 
-            <div class="p-col-12">
-                <p-selectButton [options]="tipos" #tipo></p-selectButton>
+            <div class="p-col-12" >
+                <p-selectButton  name="tipo" [options]="tipos" #tipo
+                [(ngModel)]="lancamento.tipo" ></p-selectButton>
             </div>
  
 
             <div class="p-col-6 p-md-3 p-fluid">
                 <label>Vencimento</label>
-                <p-calendar dateFormat="dd/mm/yy"
+                <p-calendar dateFormat="dd/mm/yy"  name="vencimento"
                 href="javascript:;" [pTooltip]="'OBRIGRATÓRIO'" tooltipPosition="top"
+                [(ngModel)]="lancamento.dataVencimento" name="dataVencimento"
+                #vencimento="ngModel"
                  [inline]="false" [readonlyInput]="false" [showIcon]="false">
                 </p-calendar>
             </div>
 
             <div class="p-col-6 p-md-3 p-fluid">
                 <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
-                <p-calendar dateFormat="dd/mm/yy"></p-calendar>
+                <p-calendar dateFormat="dd/mm/yy" name="dataPagamento"
+                [(ngModel)]="lancamento.dataPagamento"></p-calendar>
             </div>
             
             <div class="p-col-12 p-md-9 p-fluid">
                 <label>Descrição</label>
                 <input pInputText type="text" name="descricao"
-                  ngModel #descricao="ngModel" required minlength="5">
+                [(ngModel)]="lancamento.descricao"
+                 #descricao="ngModel" required minlength="5">
                
 
                 <span *ngIf="descricao.hasError('required') && descricao.dirty"
@@ -52,22 +57,30 @@
             <div class="p-col-12 p-md-3 p-fluid">
                 <label>Valor</label>
                 <input pInputText type="text" placeholder="0,00" currencyMask
+                [(ngModel)]="lancamento.valor" name="valor" #valor="ngModel" required
                     [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }">
             </div>
+
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Categoria</label>
-                <p-dropdown [options]="categorias" placeholder="Selecione"></p-dropdown>
+                <p-dropdown [options]="categorias" placeholder="Selecione"
+                [(ngModel)]="lancamento.categoria.codigo" name="categoria"
+                #categoria [required]="true"
+                ></p-dropdown>
             </div>
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Pessoa</label>
-                <p-dropdown [options]="pessoas" placeholder="Selecione" [filter]="true" #pessoa></p-dropdown>
+                <p-dropdown [options]="pessoas" placeholder="Selecione" name="pessoa"
+                [(ngModel)]="lancamento.pessoa.codigo"
+                [filter]="true" #pessoa></p-dropdown>
                 <!-- com filtro de palavras -->
             </div>
             <div class="p-col-12 p-fluid">
                 <label>Observação</label>
-                <textarea pInputTextarea rows="3"></textarea>
+                <textarea pInputTextarea rows="3"
+                name="observacao" [(ngModel)]="lancamento.observacao"></textarea>
             </div>
-            <button pButton type="submit" label="Salvar"></button>
+            <button pButton type="submit" label="Salvar" [disabled]="lancamentoForm.invalid"></button>
             <button pButton type="button" label="Novo" class="p-button-info"></button>
             <!-- <a href="javascript:;">Voltar para a pesquisa</a> -->
         </div>
