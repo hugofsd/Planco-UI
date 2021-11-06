@@ -59,6 +59,33 @@ export class LancamentosService {
   
   }
 
+  atualizar(lancamento: Lancamento): Observable<Lancamento> {
+    return this.http.put<Lancamento>(`${this.lancamentosUrl}/${lancamento.codigo}`, lancamento)
+
+  }
+
+  buscarPorCodigo(codigo: number): Promise<Lancamento> {
+   
+    return this.http.get(`${this.lancamentosUrl}/${codigo}`)
+      .toPromise()
+      .then((response:any) => {
+       this.converterStringsParaDatas([response]);
+        return response;
+      });
+  }
+
+  private converterStringsParaDatas(lancamentos: any[]) {
+
+    for (const lancamento of lancamentos) {
+      
+      lancamento.dataVencimento = new Date(lancamento.dataVencimento);
+
+      if (lancamento.dataPagamento) {
+        lancamento.dataPagamento = new Date(lancamento.dataPagamento); 
+      } 
+    }
+
   
 
+}
 }

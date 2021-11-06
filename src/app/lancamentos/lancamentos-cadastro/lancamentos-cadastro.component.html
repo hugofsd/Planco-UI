@@ -1,13 +1,13 @@
 <div class="container">
 
-    <form #lancamentoForm="ngForm" autocomplete="off" (ngSubmit)="cadastrar(lancamentoForm)">
+    <form #lancamentoForm="ngForm" autocomplete="off" (ngSubmit)="salvar(lancamentoForm)">
     <div class="p-grid"
     href="javascript:;" [pTooltip]="'Vencimento e descrição obrigatórios'" tooltipPosition="bottom">
 
 
 
         <div class="p-col-12">
-            <H1>Nova Pendência</H1>
+            <H1>{{ editando ? 'Edição de' : 'Novo' }} Pendência</H1>
         </div>
 
         <p-card>

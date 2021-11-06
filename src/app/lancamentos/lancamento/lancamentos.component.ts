@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LancamentosService, LancamentoFiltro } from '../lancamentos.service';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { Table } from 'primeng/table';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class LancamentoListaComponent implements OnInit {
   constructor(
     private lancamentoService: LancamentosService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -61,8 +63,11 @@ confirmarExclusao(lancamento: any): void {
     },
   });
 }
-  
- 
+
+
+pendenciaCadastro(codigo: number){
+  this.router.navigate(['/lancamentosCadastro', codigo]);
+}
 
 }
  

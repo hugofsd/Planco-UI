@@ -11,13 +11,22 @@ import { NovaVendaComponent } from './vendas/nova-venda/nova-venda.component';
 
 const routes: Routes = [
 
+  // -----------------Pendências--------------------
+  //listagem
   {path: 'lancamentos', component: LancamentoListaComponent },
 
+  //cadastro
   {path: 'lancamentosCadastro', component: LancamentosCadastroComponent },
-  
+
+  //editar
+  {path: 'lancamentosCadastro/:codigo', component: LancamentosCadastroComponent },
+   // ----------------------------------------------
+
   {path: 'pessoas', component: PessoaComponent },
 
   {path: 'pessoasCadastro', component: PessoaCadastroComponent },
+
+  {path: 'pessoasCadastro/:codigo', component: PessoaCadastroComponent },
 
   {path: 'novaVenda', component: NovaVendaComponent },
 
