@@ -18,6 +18,7 @@ import {ConfirmationService} from 'primeng/api';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {ButtonModule} from 'primeng/button';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import {ButtonModule} from 'primeng/button';
     ClientesModule,
     CoreModule,
     VendasModule,
+    
     
     // outros imports
     BrowserModule,
