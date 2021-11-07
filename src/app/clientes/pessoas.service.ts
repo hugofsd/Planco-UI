@@ -16,6 +16,9 @@ export class PessoaFiltro {
 export class PessoasService {
 
   private API = environment.apiurl;
+
+
+  pessoasUrl = 'http://localhost:8080/pessoas'
   
   constructor(
     private http: HttpClient,
@@ -45,6 +48,13 @@ export class PessoasService {
   adicionar(pessoa: Pessoa): Observable<Pessoa> {
    
     return this.http.post<Pessoa>(`${this.API}/pessoas/`, pessoa);
+  
+  }
+
+
+  buscarPorCodigo(codigo: number) : Observable<Pessoa>{
+   
+    return this.http.get<Pessoa>(`${this.pessoasUrl}/${codigo}`)
   
   }
   

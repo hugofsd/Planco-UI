@@ -30,11 +30,15 @@ const routes: Routes = [
   {path: 'lancamentosCadastro/:codigo', component: LancamentosCadastroComponent },
    // ----------------------------------------------
 
+
+   // -----------------Clientes--------------------
   {path: 'pessoas', component: PessoaComponent },
 
   {path: 'pessoasCadastro', component: PessoaCadastroComponent },
 
   {path: 'pessoasCadastro/:codigo', component: PessoaCadastroComponent },
+  // ----------------------------------------------
+
 
   {path: 'novaVenda', component: NovaVendaComponent },
 

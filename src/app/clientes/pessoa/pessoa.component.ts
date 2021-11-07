@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PessoaFiltro, PessoasService } from '../pessoas.service';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { Table } from 'primeng/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pessoa',
@@ -20,6 +21,7 @@ export class PessoaComponent implements OnInit {
     private pessoaService: PessoasService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -75,5 +77,9 @@ export class PessoaComponent implements OnInit {
         this.messageService.add({ key: 'msg', severity: 'error', detail: 'Ocorreu um erro!' })
       });  
       
+  }
+
+  ClienteCadastro(codigo: number){
+    this.router.navigate(['/pessoasCadastro', codigo]);
   }
 }

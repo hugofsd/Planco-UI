@@ -17,11 +17,13 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {ButtonModule} from 'primeng/button';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    DashboardComponent,
 
   ],
   imports: [
