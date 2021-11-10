@@ -47,6 +47,15 @@
         
         <p-table  [value]="lancamentos" [paginator]="true" [rows]="2"
         [responsive]="true" #tabela>
+
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex">
+              
+                <button type="button" pButton pRipple icon="pi pi-file-excel"  class="p-button-success p-mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+                <button type="button" pButton pRipple icon="pi pi-file-pdf" class="p-button-warning p-mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+
+            </div>
+        </ng-template>
             <ng-template pTemplate="header">
                 <tr>
                     <th>Pessoa</th>
@@ -57,8 +66,9 @@
                     <th class="col-acoes-header"></th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-lancamento>
-                <tr>
+            <ng-template pTemplate="body" let-lancamento >
+                <!-- *ngIf="lancamento.categoria.codigo === 26" -->
+                <tr  >
                     <td>{{ lancamento.pessoa.nome }}</td>
                     <td>{{ lancamento.descricao }}</td>
                     <td class="col-data-content">{{ lancamento.dataVencimento }}</td>

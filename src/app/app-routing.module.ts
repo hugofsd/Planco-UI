@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PessoaCadastroComponent } from './clientes/pessoa-cadastro/pessoa-cadastro.component';
 import { PessoaComponent } from './clientes/pessoa/pessoa.component';
 import { PageNaoEncontradaComponent } from './core/page-nao-encontrada.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { LancamentoListaComponent } from './lancamentos/lancamento/lancamentos.component';
 import { LancamentosCadastroComponent } from './lancamentos/lancamentos-cadastro/lancamentos-cadastro.component';
 import { ControleVendasComponent } from './vendas/controle-vendas/controle-vendas.component';
@@ -16,8 +17,8 @@ const routes: Routes = [
   
 
   // HOME REDIRECIONADA
-  { path: '', redirectTo: 'lancamentos', pathMatch: 'full' },
-
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {path: 'home', component: DashboardComponent },
   // -----------------Pendências--------------------
   //listagem
   {path: 'lancamentos', component: LancamentoListaComponent },

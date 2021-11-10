@@ -39,4 +39,8 @@ export class NavegacaoComponent implements OnInit {
     this.router.navigate(['controleVenda']);
   }
 
+  home(){
+    this.router.navigate(['home']);
+  }
+
 }
