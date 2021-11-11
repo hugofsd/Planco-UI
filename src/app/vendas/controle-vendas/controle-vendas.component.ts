@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { Table } from 'primeng/table';
+import { LancamentoFiltro, LancamentosService } from 'src/app/lancamentos/lancamentos.service';
 
 @Component({
   selector: 'app-controle-vendas',
@@ -7,18 +11,63 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ControleVendasComponent implements OnInit {
 
-  constructor() { }
+  lancamentos: any[] = [] ;
+
+  filtro = new LancamentoFiltro()
+
+  @ViewChild('tabela') grid!: Table; // para atualizar a tabela
+
+
+  constructor(
+    private lancamentoService: LancamentosService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
+    this.pesquisar();  
   }
 
 
-  vendas = [
-    { id: '01', cliente: 'Ana', Data: '01/01/2021', total: 1880 },
-    { id: '02', cliente: 'Caio', Data: '01/01/2021', total: 880 },
-    { id: '03', cliente: 'Alex', Data: '01/01/2021', total: 100 },
-    { id: '04', cliente: 'Beatriz', Data: '01/01/2021', total: 4880 },
-  ];
-    
+  pesquisar (){
+    console.log(this.filtro);
+    this.lancamentoService.pesquisar(this.filtro).subscribe(data  =>{
+      this.lancamentos = data.content;
+    //  this.messageService.add({ severity: 'success', detail: 'Pendência excluído com sucesso!' })
+      console.log(this.lancamentos);
+    })
+  }
+
+  excluir(lancamento: any) {
+    this.lancamentoService.excluir(lancamento.codigo)
+      .subscribe(() => {
+        if (this.grid.first === 0) {
+          this.pesquisar();
+        
+        } else {
+          this.grid.reset();
+  
+        }
+        this.messageService.add({ key: 'msg', severity: 'success', detail: 'Pendência excluído com sucesso!' })
+      },
+      error => {
+        this.messageService.add({ key: 'msg', severity: 'error', detail: 'Erro ao excluir pendência!' })
+      });   
+  }
+  
+  confirmarExclusao(lancamento: any): void {
+    this.confirmationService.confirm({
+      message: 'Tem certeza que deseja excluir?',
+      accept: () => {
+          this.excluir(lancamento);
+      },
+    });
+  }
+  
+  
+  pendenciaCadastro(codigo: number){
+    this.router.navigate(['/lancamentosCadastro', codigo]);
+  }
 
 }

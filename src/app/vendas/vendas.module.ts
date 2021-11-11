@@ -13,7 +13,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
-
+import {PanelModule} from 'primeng/panel';
 
 
 @NgModule({
@@ -34,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     SelectButtonModule,
     DropdownModule,
     CardModule,
+    PanelModule,
 
     CurrencyMaskModule
   ],

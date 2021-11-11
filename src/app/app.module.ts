@@ -18,7 +18,7 @@ import {ConfirmationService} from 'primeng/api';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {ButtonModule} from 'primeng/button';
 import { DashboardModule } from './dashboard/dashboard.module';
-
+import {PanelModule} from 'primeng/panel';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     ToastModule,
     ConfirmDialogModule,
     ConfirmPopupModule,
-    ButtonModule
+    ButtonModule,
+    PanelModule
     
   
   ],

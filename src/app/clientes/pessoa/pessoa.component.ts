@@ -82,4 +82,8 @@ export class PessoaComponent implements OnInit {
   ClienteCadastro(codigo: number){
     this.router.navigate(['/pessoasCadastro', codigo]);
   }
+
+  cadastro(){
+    this.router.navigate(['pessoasCadastro']);
+  }
 }

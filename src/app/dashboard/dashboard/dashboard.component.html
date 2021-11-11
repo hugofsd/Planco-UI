@@ -1,23 +1,114 @@
-<div class="container">
+
+<div class="containerHome">
+
+ 
+         
     <div class="p-grid">
       <div class="p-col-12">
-        <h1>Dashboard</h1>
+        <h1>Bem-vindo</h1>
       </div>
 
-
       <div class="p-col-12 p-lg-6">
-        <p-panel header="Balanço financeiro do mês">
+        <p-panel header="Balanço financeiro do mês: ">
           <p-chart type="line" [data]="lineChartData"></p-chart>
         </p-panel>
       </div>
   
       <div class="p-col-12 p-lg-6">
-        <p-panel header="Dados geráis por categoria">
+        <p-panel header="Dados geráis por categoria: ">
           <p-chart type="pie" [data]="pieChartData"></p-chart>
         </p-panel>
       </div>
+
+      <div class="p-col-12 p-lg-7">
+        <p-panel header="Resumo de cadastros:">
+         
   
-     
-  
+      <p-table  [value]="lancamentos" [paginator]="true" [rows]="1"
+        [responsive]="true" #ultimasVendas > 
+            <ng-template pTemplate="header">
+                <tr>
+                    <!-- <th class="col-data-header" > Descrição</th> -->
+                    <th class="col-data-header">Pagamento</th>
+                    <th class="col-valor-header">Tipo</th>
+                    <th class="col-acoes-header"></th>
+                   
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-lancamento >
+                <tr  >
+                    <!-- <td>{{ lancamento.descricao }}</td> -->
+                    <td class="col-data-content">{{ lancamento.dataPagamento }}</td>
+                    <td class="col-valor" [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">{{ lancamento.tipo }} </td>
+                    <td class="col-acoes">
+                      <button pButton icon="pi pi-eye"  pTooltip="Editar" tooltipPosition="top"
+                      (click)="visualizarVenda(lancamento.codigo)"
+                      ></button>
+                      <button pButton icon="pi pi-trash"  pTooltip="Excluir" tooltipPosition="top"
+                      (click)="confirmarExclusao(lancamento)"></button>
+                  </td>
+                  </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                  <td colspan="5">
+                 <h2>Nenhuma registro</h2>   
+                  </td>
+                </tr>
+              </ng-template>
+        </p-table>
+
+      </p-panel>
     </div>
+
+
+    <div class="p-col-12 p-lg-5">
+      <p-panel header="Lucro do mês:">
+       <p  class="lucro"  [style.color]="lucro >= 0 ? '#6959CD' : 'red'">{{lucro}}</p> 
+      </p-panel>
+    </div>
+    </div>
+
+
+    <p-dialog header="Informações:" [(visible)]="display">
+
+      <div [style]="{width: '360px'}" 
+      *ngIf="venda"
+      >
+      
+      <p-divider align="left" type="dashed">
+          <b>Vinculado</b>
+      </p-divider>
+
+       <p> {{venda.pessoa.nome}} </p> 
+
+       <p-divider  type="dashed">
+        <b>Tipo de lançamento</b>
+      </p-divider>
+
+      <p> {{venda.tipo}}</p> 
+
+      <p-divider align="left" type="dashed">
+          <b>Valor</b>
+      </p-divider>
+
+      <p> {{venda.valor}}</p> 
+
+      <p-divider align="left" type="dashed">
+        <b>Descrição</b>
+      </p-divider>
+      <p> {{venda.descricao}}</p> 
+
+      <p-divider  type="dashed">
+        <b>Observação</b>
+      </p-divider>
+
+      <p> {{venda.observacao}}</p> 
+
+      <p-divider></p-divider>
+  </div>
+
+    </p-dialog>
+
 </div>

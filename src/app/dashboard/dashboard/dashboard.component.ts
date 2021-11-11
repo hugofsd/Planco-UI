@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { MessageService, ConfirmationService } from 'primeng/api';
+import { Table } from 'primeng/table';
+import { PessoaFiltro, PessoasService } from 'src/app/clientes/pessoas.service';
+import { LancamentoFiltro, LancamentosService } from 'src/app/lancamentos/lancamentos.service';
 import { DashboardService } from '../dashboard.service';
 
 @Component({
@@ -12,6 +17,12 @@ export class DashboardComponent implements OnInit {
 
   lineChartData: any;
 
+  pessoas: any[] = [];
+
+  filtroPessoa = new PessoaFiltro();
+
+
+  filtro = new LancamentoFiltro()
 
   clienteChartData = {
     labels: ['Mensal', 'Educação', 'Lazer', 'Imprevistos'],
@@ -23,10 +34,34 @@ export class DashboardComponent implements OnInit {
     ]
   };
 
- 
+  lancamentos: any[] = [] ;
 
 
-  constructor(private dashboardService: DashboardService) { }
+  receita: number[] | undefined;
+
+  despesa: number[] | undefined;
+
+  receitaTotal: number | undefined;;
+
+  despesaTotal: number | undefined;
+
+  lucro: number = 0;
+
+  venda: any;
+
+  @ViewChild('ultimasVendas') grid!: Table; // para atualizar a tabela
+
+
+  display: boolean = false;
+
+  constructor(
+  private dashboardService: DashboardService,
+  private lancamentoService: LancamentosService,
+  private pessoaService: PessoasService,
+  private messageService: MessageService,
+  private router: Router,
+  private confirmationService: ConfirmationService,
+  ) { }
 
   ngOnInit(): void {
 
@@ -34,8 +69,45 @@ export class DashboardComponent implements OnInit {
 
    this.linha();
 
+   this.pesquisar();  
+
+   this.pesquisarPessoas();
+
 }
 
+dialogo(venda: any){
+  this.display = true;
+  this.venda = venda;
+  console.log('Venda',this.venda)
+}
+ 
+visualizarVenda(codigo: number){
+  this.lancamentoService.buscarPorCodigo(codigo)
+      .then(lancamento => {
+        this.dialogo(lancamento)
+      },
+      error => {
+        this.messageService.add({ key: 'msg', severity: 'error', detail: 'Erro ao CADASTRAR pendência!' })
+      });
+}
+
+pesquisarPessoas(){
+  //console.log(this.filtro);
+  this.pessoaService.pesquisar(this.filtroPessoa).subscribe(
+    data => {
+      this.pessoas = data;
+     // console.log(this.pessoas);
+    }
+  )
+}
+
+pesquisar (){
+  console.log(this.filtro);
+  this.lancamentoService.pesquisar(this.filtro).subscribe(data  =>{
+    this.lancamentos = data.content;
+//   console.log(this.lancamentos);
+  })
+}
 
 pizza() {
   this.dashboardService.lancamentosPorCategoria()
@@ -43,16 +115,17 @@ pizza() {
       
       this.pieChartData = {
         labels: dados.map(dado => dado.categoria.name),
+        
+        
         datasets: [
           {
             data: dados.map(dado => dado.total),
-            backgroundColor: ['#FF9900', '#109618', '#990099', '#3B3EAC', '#0099C6',
-                                '#DD4477', '#3366CC', '#DC3912']
+            backgroundColor: ['#4B1A75', '#DA70D6', '#673BB7', '#666BAD']
+            
           }
         ]
       };
-
-      console.log(dados);
+  //    console.log(dados)
     });
 
     
@@ -73,7 +146,7 @@ linha() {
           {
             label: 'Receitas',
             data: totaisReceitas,
-            borderColor: '#3366CC'
+            borderColor: '#4B1A75'
           }, {
             label: 'Despesas',
             data: totaisDespesas,
@@ -81,6 +154,26 @@ linha() {
           }
         ]
       }
+
+
+      this.receita = totaisReceitas;
+
+
+      this.despesa = totaisDespesas;
+
+      //Calcula a despesa total do mês
+      const despesatotal = this.despesa.reduce(function(acumulador, valorAtual) {
+        return acumulador + valorAtual;
+      }, 0)
+
+      const receitatotal = this.receita.reduce(function(acumulador, valorAtual) {
+        return acumulador + valorAtual;
+      }, 0)
+
+      this.lucro = ( receitatotal- despesatotal);
+
+    //  console.log(this.lucro)
+     
     });
 }
 
@@ -117,5 +210,31 @@ private configurarDiasMes() {
   }
 
   return dias;
+}
+
+excluir(lancamento: any) {
+  this.lancamentoService.excluir(lancamento.codigo)
+    .subscribe(() => {
+      if (this.grid.first === 0) {
+        this.pesquisar();
+      
+      } else {
+        this.grid.reset();
+
+      }
+      this.messageService.add({ key: 'msg', severity: 'success', detail: 'Venda excluído com sucesso!' })
+    },
+    error => {
+      this.messageService.add({ key: 'msg', severity: 'error', detail: 'Erro ao excluir Venda!' })
+    });   
+}
+
+confirmarExclusao(lancamento: any): void {
+  this.confirmationService.confirm({
+    message: 'Tem certeza que deseja excluir?',
+    accept: () => {
+        this.excluir(lancamento);
+    },
+  });
 }
 }

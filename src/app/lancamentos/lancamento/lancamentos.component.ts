@@ -29,6 +29,8 @@ export class LancamentoListaComponent implements OnInit {
     this.pesquisar();  
   }
 
+  
+
  pesquisar (){
    console.log(this.filtro);
    this.lancamentoService.pesquisar(this.filtro).subscribe(data  =>{
@@ -69,5 +71,9 @@ pendenciaCadastro(codigo: number){
   this.router.navigate(['/lancamentosCadastro', codigo]);
 }
 
+
+cadastro(){
+  this.router.navigate(['lancamentosCadastro']);
+}
 }
  

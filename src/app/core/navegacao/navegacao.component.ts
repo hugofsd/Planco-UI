@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NavegacaoComponent implements OnInit {
 
-  exibindoMenu = false;
+  exibindoMenu = true;
   constructor(
     private router: Router,
   ) { }
