@@ -43,4 +43,13 @@ export class NavegacaoComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
+
+  empresas(){
+    this.router.navigate(['empresas']);
+  }
+
+  empresasCadastro(){
+    this.router.navigate(['empresaCadastro']);
+  }
+
 }

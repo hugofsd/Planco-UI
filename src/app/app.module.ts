@@ -19,6 +19,7 @@ import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {ButtonModule} from 'primeng/button';
 import { DashboardModule } from './dashboard/dashboard.module';
 import {PanelModule} from 'primeng/panel';
+import { EmpresaModule } from './empresa/empresa.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {PanelModule} from 'primeng/panel';
   ],
   imports: [
 
+    EmpresaModule,
     DashboardModule,
     LancamentosModule,
     ClientesModule,

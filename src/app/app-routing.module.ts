@@ -4,6 +4,8 @@ import { PessoaCadastroComponent } from './clientes/pessoa-cadastro/pessoa-cadas
 import { PessoaComponent } from './clientes/pessoa/pessoa.component';
 import { PageNaoEncontradaComponent } from './core/page-nao-encontrada.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { EmpresaCadastroComponent } from './empresa/empresa-cadastro/empresa-cadastro.component';
+import { EmpresasComponent } from './empresa/empresas/empresas.component';
 import { LancamentoListaComponent } from './lancamentos/lancamento/lancamentos.component';
 import { LancamentosCadastroComponent } from './lancamentos/lancamentos-cadastro/lancamentos-cadastro.component';
 import { ControleVendasComponent } from './vendas/controle-vendas/controle-vendas.component';
@@ -40,6 +42,16 @@ const routes: Routes = [
   {path: 'pessoasCadastro/:codigo', component: PessoaCadastroComponent },
   // ----------------------------------------------
 
+
+  // -----------------EMPRESA--------------------
+  {path: 'empresas', component: EmpresasComponent },
+
+  {path: 'empresaCadastro', component: EmpresaCadastroComponent },
+
+  {path: 'empresaCadastro/:codigo', component: EmpresaCadastroComponent },
+
+  
+  // ----------------------------------------------
 
   {path: 'novaVenda', component: NovaVendaComponent },
 

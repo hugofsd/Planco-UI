@@ -41,9 +41,14 @@
     color: #c0bbb7;
     text-decoration: none;
   }
+
+  .navbar-menuitem:hover{
+    cursor: pointer;
+  }
   
   .navbar-menuitem a:hover {
     color: #fff;
+   
   }
 
   .logo {

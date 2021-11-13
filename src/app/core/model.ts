@@ -11,7 +11,15 @@ export class Endereco {
 export class Pessoa {
   codigo?: number;
   nome?: string;
-  email?:string
+  email?:string;
+  endereco = new Endereco();
+  ativo = true;
+}
+
+export class Empresa {
+  codigo?: number;
+  nome?: string;
+  email?:string;
   endereco = new Endereco();
   ativo = true;
 }
