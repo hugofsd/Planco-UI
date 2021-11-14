@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms';
 import { Lancamento } from 'src/app/core/model';
 import { LancamentosService } from '../lancamentos.service';
 import { MessageService } from 'primeng/api';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-lancamentos-cadastro',
   templateUrl: './lancamentos-cadastro.component.html',
@@ -39,6 +39,7 @@ export class LancamentosCadastroComponent implements OnInit {
     private messageService: MessageService,
     // pegar a rota carregada
     private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -136,6 +137,10 @@ export class LancamentosCadastroComponent implements OnInit {
       error => {
         this.messageService.add({ key: 'msg', severity: 'error', detail: 'Erro ao excluir pendência!' })
       });   
+  }
+
+  pendenciaLista(){
+    this.router.navigate(['lancamentos']);
   }
 
 

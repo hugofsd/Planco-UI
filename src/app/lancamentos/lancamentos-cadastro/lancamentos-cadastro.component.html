@@ -81,7 +81,7 @@
                 name="observacao" [(ngModel)]="lancamento.observacao"></textarea>
             </div>
             <button pButton type="submit" label="Salvar" [disabled]="lancamentoForm.invalid"></button>
-            <button pButton type="button" label="Novo" class="p-button-info"></button>
+            <button pButton type="button" label="Voltar" (click)="pendenciaLista()" class="p-button-info"></button>
             <!-- <a href="javascript:;">Voltar para a pesquisa</a> -->
         </div>
     </p-card>

@@ -9,6 +9,7 @@ export class LancamentoFiltro {
   descricao?: string;
   dataVencimentoInicio?: Date;
   dataVencimentoFim?: Date;
+  codigo?:number;
   // pagina = 1;
   // itensPorPagina = 2;
 }
@@ -38,15 +39,26 @@ export class LancamentosService {
     if(filtro.descricao){ 
       params = params.set('descricao', filtro.descricao);
     }    
+
+    if(filtro.codigo){ 
+      params = params.set('codigo', filtro.codigo);
+    } 
+ 
+   
     if (filtro.dataVencimentoInicio) {
       params = params.set('DataVencimentoDe', this.datePipe.transform(filtro.dataVencimentoInicio, 'yyyy-MM-dd')!);
     }
 
     if (filtro.dataVencimentoFim) {
-      params = params.set('DataVencimentoAte', this.datePipe.transform(filtro.dataVencimentoFim, 'yyyy-MM-dd')!);
+      params = params.set('DataVencimentoAte', this.datePipe.transform(filtro.dataVencimentoFim, 'yyyy-MM-dd-MM-yyyy')!);
     }
+   
+
 
     return this.http.get(`${this.API}/lancamentos`,{params});
+
+  
+
   }
 
   excluir(codigo: number): Observable<any> {

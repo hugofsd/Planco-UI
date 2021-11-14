@@ -12,7 +12,11 @@ import { Router } from '@angular/router';
 })
 export class LancamentoListaComponent implements OnInit {
 
+
+  dados: any;
+
   lancamentos: any[] = [] ;
+  
 
   filtro = new LancamentoFiltro()
 
@@ -30,15 +34,24 @@ export class LancamentoListaComponent implements OnInit {
   }
 
   
-
+//  if(this.filtro.codigo){
+  //    const codigo = this.filtro.codigo;
+  //    this.buscarPorCodigo(codigo);
+  //  } else{
  pesquisar (){
    console.log(this.filtro);
-   this.lancamentoService.pesquisar(this.filtro).subscribe(data  =>{
-     this.lancamentos = data.content;
-     this.messageService.add({ severity: 'success', detail: 'Pendência excluído com sucesso!' })
-     console.log(this.lancamentos);
-   })
- }
+  
+    this.lancamentoService.pesquisar(this.filtro).subscribe(data  =>{
+      this.lancamentos = data.content;
+      this.dados = this.lancamentos.slice(0).reverse()
+      this.messageService.add({ severity: 'success', detail: 'Pendência excluído com sucesso!' })
+     // console.log(this.lancamentos);
+    })
+   
+
+  // console.log(this.lancamentos)
+
+ } 
 
  excluir(lancamento: any) {
   this.lancamentoService.excluir(lancamento.codigo)

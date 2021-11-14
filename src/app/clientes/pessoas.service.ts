@@ -7,7 +7,7 @@ import { Pessoa } from '../core/model';
 
 export class PessoaFiltro {
   nome?: string;
-  id?: number;
+  codigo?: number;
 }
 
 @Injectable({
@@ -31,7 +31,11 @@ export class PessoasService {
       params = params.set('nome', filtro.nome);
     }   
 
-    return this.http.get<any>(`${this.API}/pessoas`,{params});
+    if(filtro.codigo){ 
+      params = params.set('codigo', filtro.codigo);
+    }
+
+    return this.http.get(`${this.API}/pessoas`,{params});
   }
 
   excluir(codigo: number): Observable<any> {

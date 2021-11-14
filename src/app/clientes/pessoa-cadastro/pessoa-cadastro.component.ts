@@ -3,7 +3,7 @@ import { MessageService } from 'primeng/api';
 import { Pessoa } from 'src/app/core/model';
 import { PessoasService } from '../pessoas.service';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-pessoa-cadastro',
   templateUrl: './pessoa-cadastro.component.html',
@@ -15,11 +15,13 @@ export class PessoaCadastroComponent implements OnInit {
 
   codigoEdit: number | undefined;
 
+  codigoPendencia: any
 
   constructor(
     private pessoaService: PessoasService,
     private messageService: MessageService,
     private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   
@@ -28,12 +30,12 @@ export class PessoaCadastroComponent implements OnInit {
 
     console.log(this.route.snapshot.params['codigo']);
 
-    const codigoPendencia = this.route.snapshot.params['codigo'];
+    this.codigoPendencia = this.route.snapshot.params['codigo'];
 
-    this.codigoEdit = codigoPendencia;
+    this.codigoEdit = this.codigoPendencia;
 
-    if(codigoPendencia){
-      this.carregarCliente(codigoPendencia);
+    if(this.codigoPendencia){
+      this.carregarEmpresa(this.codigoPendencia);
      }
 
   }
@@ -64,7 +66,7 @@ export class PessoaCadastroComponent implements OnInit {
       }); 
   }
 
-  carregarCliente(codigo: number){
+  carregarEmpresa(codigo: number){
     this.pessoaService.buscarPorCodigo(codigo)
       .subscribe(pessoa => {
         this.pessoa = pessoa;
@@ -72,6 +74,10 @@ export class PessoaCadastroComponent implements OnInit {
       error => {
         this.messageService.add({ key: 'msg', severity: 'error', detail: 'Erro ao CADASTRAR pendência!' })
       });
+  }
+
+  voltar(){
+    this.router.navigate(['pessoas']);
   }
 
 }

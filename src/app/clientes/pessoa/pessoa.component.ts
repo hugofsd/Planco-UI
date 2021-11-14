@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class PessoaComponent implements OnInit {
 
+  dados: any;
+
   pessoas: any[] = [];
 
   filtro = new PessoaFiltro()
@@ -33,6 +35,7 @@ export class PessoaComponent implements OnInit {
     this.pessoaService.pesquisar(this.filtro).subscribe(
       data => {
         this.pessoas = data;
+        this.dados = this.pessoas.slice(0).reverse()
         console.log(this.pessoas);
       }
     )
@@ -46,10 +49,10 @@ export class PessoaComponent implements OnInit {
         } else {
           this.grid.reset();
         }
-        this.messageService.add({ key: 'msg', severity: 'success', detail: 'Pendência excluído com sucesso!' })
+        this.messageService.add({ key: 'msg', severity: 'success', detail: 'Pessoa excluído com sucesso!' })
       },
       error => {
-        this.messageService.add({ key: 'msg', severity: 'error', detail: 'Cliente com vínculo!' })
+        this.messageService.add({ key: 'msg', severity: 'error', detail: 'Existem pendências vinculadas a essa pessoa!' })
       });   
   }
 

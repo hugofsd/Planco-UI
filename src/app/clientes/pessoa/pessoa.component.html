@@ -1,86 +1,96 @@
 <div class="containerTwo">
   <form autocomplete="off" (ngSubmit)="pesquisar()">
 
-  <div class="p-grid">
+    <div class="p-grid">
 
-    <div class="p-col-12">
-      <H1>Clientes Cadastrados</H1>
-    </div>
+      <div class="p-col-12">
+        <H1>Clientes Cadastrados</H1>
+      </div>
 
-    <div class="p-col-12 p-fluid">
-      <label>Nome: </label>
-      <input  pInputText type="text" name="nome" 
-      [(ngModel)]="filtro.nome"/>
-    </div>
+      <div class="p-col-2 p-fluid">
+        <label>Código: </label>
+        <input pInputText type="text" name="nome" [(ngModel)]="filtro.codigo" />
+      </div>
 
-    <div class="p-col-12">
-      <a pButton type="submit" label="PESQUISAR"></a>
-
-      <a pButton  (click)="cadastro()" 
-        label="CADASTRAR CLIENTE" ></a>
-    </div>
-     <br>
-  </div>
-</form>
-
-
-
-  <div class="p-grid">
-  
-        <div class="p-col-12">
-          <p-table [value]="pessoas" [paginator]="true" [rows]="2"
-          [responsive]="true" #tabela>
-            <ng-template pTemplate="header">
-              <tr>
-                <th>Nome</th>
-                <th>Cidade</th>
-                <th>Estado</th>
-                <th>Status</th>
-                <th class="col-acoes-header"></th>
-              </tr>
-            </ng-template>
-
-            <ng-template pTemplate="body" let-pessoa>
-              <tr>
-                <td>
-                  {{ pessoa.nome }}
-                </td>
-                <td>
-                  {{ pessoa.endereco.cidade }}
-                </td>
-                <td>
-                  {{ pessoa.endereco.estado }} 
-                </td>
-                <td>
-                  <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" 
-                  tooltipPosition="top" (click)="status(pessoa)">
-                    {{ pessoa.ativo ? 'Ativo' : 'Inativo' }}
-                  </a>
-                </td>
-                <td class="col-acoes">
-                  <span class="p-column-title"></span>
-                  <button pButton  icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                  (click)="ClienteCadastro(pessoa.codigo)"></button>
-                 
-                  <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                  (click)="confirmarExclusao(pessoa)"></button>
-                </td>
-              </tr>
-            </ng-template>
-
-            <ng-template pTemplate="emptymessage">
-              <tr>
-                <td colspan="5">
-                  <h2>Nenhuma pessoa encontrada</h2>
-                </td>
-              </tr>
-            </ng-template>
-
-          </p-table>
-        </div>
-
+      <div class="p-col-10 p-fluid">
+        <label>Nome: </label>
+        <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome" />
       </div>
 
 
+      <br>
+    </div>
+  </form>
+
+
+
+  <div class="p-grid">
+
+    <div class="p-col-12">
+      <p-table [value]="dados" [paginator]="true" [rows]="2" [responsive]="true" #tabela>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Status</th>
+            <th class="col-acoes-header"></th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-pessoa>
+          <tr>
+            <td>
+              # {{ pessoa.codigo }}
+            </td>
+            <td>
+              {{ pessoa.nome }}
+            </td>
+            <td>
+              {{ pessoa.endereco.cidade }}
+            </td>
+            <td>
+              {{ pessoa.endereco.estado }}
+            </td>
+            <td>
+              <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top"
+                (click)="status(pessoa)">
+                {{ pessoa.ativo ? 'ATIVO' : 'INATIVO' }}
+              </a>
+            </td>
+
+            <td class="col-acoes">
+              <span class="p-column-title"></span>
+              <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                (click)="ClienteCadastro(pessoa.codigo)"></button>
+
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+                (click)="confirmarExclusao(pessoa)"></button>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="5">
+              <h2>Nenhuma pessoa encontrada</h2>
+            </td>
+          </tr>
+        </ng-template>
+
+      </p-table>
+    </div>
+    
+    <div class="p-col-3  p-fluid">
+      <button pButton (click)="pesquisar()" label="PESQUISAR"></button>
+
+    </div>
+
+    <div class="p-col-3  p-fluid">
+      <button pButton (click)="cadastro()" label="NOVA PESSOA"></button>
+    </div>
   </div>
 
+
+</div>

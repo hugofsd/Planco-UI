@@ -7,7 +7,7 @@ import { Empresa } from '../core/model';
 
 export class EmpresaFiltro {
   nome?: string;
-  id?: number;
+  codigo?: number;
 }
 
 @Injectable({
@@ -17,7 +17,7 @@ export class EmpresaService {
 
   private API = environment.apiurl;
 
-  empresaUrl = 'http://localhost:8080/empresa'
+  empresaUrl = 'http://localhost:8080/empresas'
 
   constructor(
     private http: HttpClient,
@@ -30,7 +30,11 @@ export class EmpresaService {
       params = params.set('nome', filtro.nome);
     }   
 
-    return this.http.get<any>(`${this.API}/empresas`,{params});
+    if(filtro.codigo){ 
+      params = params.set('codigo', filtro.codigo);
+    }
+
+    return this.http.get(`${this.API}/empresas`,{params});
   }
 
   excluir(codigo: number): Observable<any> {
@@ -48,6 +52,12 @@ export class EmpresaService {
     return this.http.get<Empresa>(`${this.empresaUrl}/${codigo}`)
   
   }
+
+  mudarStatus(codigo: number, ativo: boolean):  Promise<void> {
+    return this.http.put<void>(`${this.API}/empresas/${codigo}/ativo`, ativo)
+    .toPromise();
+  }
+
 
 
 }

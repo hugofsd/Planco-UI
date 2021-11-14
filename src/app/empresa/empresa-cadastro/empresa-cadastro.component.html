@@ -1,33 +1,168 @@
 <div class="containerTwo">
     <div class="p-grid">
         <div class="p-col-12">
-            <H1> Nova Empresa</H1>
+            <H1> {{ editando ? 'Edição de' : 'Nova' }} Empresa</H1>
         </div>
     </div>
 
     <p-card>
 
-        <form>
+        <form #empresaForm="ngForm" autocomplete="off" (ngSubmit)="cadastrar(empresaForm)">
             <div class="p-grid" href="javascript:;" [pTooltip]="'Apenas o complemento não é obrigatório'"
                 tooltipPosition="bottom">
 
                 <div class="p-col-6 p-fluid">
-                    <label> Nome Fantasia </label>
-                    <input pInputText type="text" required minlength="5" name="nome">
-                </div>
-
-                <div class="p-col-6 p-fluid">
-                    <label>E-mail </label>
+                    <label 
+                    >Nome fantasia:  </label>
+                    <input pInputText type="text" name="nome"
+                    [(ngModel)]="empresa.nome"
+                    #nome="ngModel" required minlength="5">
+      
+                  <span *ngIf="nome.hasError('required') && nome.dirty"
+                    class="p-message p-message-error">
+                    Informe um nome.
+                  </span>
+                  <span *ngIf="nome.hasError('minlength') && nome.dirty"
+                    class="p-message p-message-error">
+                    Mínimo de {{ nome.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ nome.errors?.minlength.actualLength }}
+                  </span>
+      
+                  </div>
+      
+                  <div class="p-col-6 p-fluid">
+                    <label 
+                    >E-mail: </label>
                     <input pInputText type="text" name="email"
-                    required minlength="7">
-                </div>
-
-                <div class="p-col-12 p-md-9 p-fluid">
-                    <label>Logradouro </label>
+                    [(ngModel)]="empresa.email"
+                    #email="ngModel" required minlength="7">
+      
+                  <span *ngIf="email.hasError('required') && email.dirty"
+                    class="p-message p-message-error">
+                    Informe um e-mail.
+                  </span>
+                  <span *ngIf="email.hasError('minlength') && email.dirty"
+                    class="p-message p-message-error">
+                    Mínimo de {{ email.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ email.errors?.minlength.actualLength }}
+                  </span>
+      
+                  </div>
+      
+            
+                  <div class="p-col-12 p-md-9 p-fluid">
+                    <label>Logradouro: </label>
                     <input pInputText type="text" name="logradouro"
-                    required minlength="5">
-                </div>
-
+                    [(ngModel)]="empresa.endereco.logradouro" #logradouro="ngModel" required minlength="5">
+      
+                  <span *ngIf="logradouro.hasError('required') && logradouro.dirty"
+                    class="p-message p-message-error">
+                    Informe o logradouro.
+                  </span>
+      
+                  <span *ngIf="logradouro.hasError('minlength') && logradouro.dirty"
+                    class="p-message p-message-error">
+                    Mínimo de {{ logradouro.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ logradouro.errors?.minlength.actualLength }}
+                  </span>
+                  
+                  </div>
+            
+                  <div class="p-col-12 p-md-3 p-fluid">
+                    <label>Número</label>
+                    <input pInputText type="text"
+                    name="numero"  [(ngModel)]="empresa.endereco.numero"
+                    ngModel #numero="ngModel" required minlength="1">
+      
+                  <span *ngIf="numero.hasError('required') && numero.dirty"
+                    class="p-message p-message-error">
+                    Informe o numero.
+                  </span>
+      
+                  <span *ngIf="numero.hasError('minlength') && numero.dirty"
+                    class="p-message p-message-error">
+                    Mínimo de {{ numero.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ numero.errors?.minlength.actualLength }}
+                  </span>
+      
+                  </div>
+            
+                  <div class="p-col-12 p-md-4 p-fluid">
+                    <label>Complemento:</label>
+                    <input pInputText type="text" name="complemento" 
+                    [(ngModel)]="empresa.endereco.complemento"
+                    >
+                  </div>
+            
+                  <div class="p-col-12 p-md-4 p-fluid">
+                    <label>Bairro: </label>
+                    <input pInputText type="text"
+                    name="bairro"
+                    [(ngModel)]="empresa.endereco.bairro"
+                    ngModel #bairro="ngModel" required minlength="4"
+                    >
+      
+                    <span *ngIf="bairro.hasError('required') && bairro.dirty"
+                    class="p-message p-message-error">
+                    Informe o bairro.
+                  </span>
+                  <span *ngIf="bairro.hasError('minlength') && bairro.dirty"
+                    class="p-message p-message-error">
+                    Mínimo de {{ bairro.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ bairro.errors?.minlength.actualLength }}
+                  </span>
+      
+                  </div>
+            
+                  <div class="p-col-12 p-md-4 p-fluid">
+                    <label>CEP: </label>
+                    <input pInputText type="text"
+                    name="cep"  [(ngModel)]="empresa.endereco.cep"
+                    ngModel #cep="ngModel" required minlength="1">
+      
+      
+                    <span *ngIf="cep.hasError('required') && cep.dirty"
+                    class="p-message p-message-error">
+                    Informe o cep.
+                  </span>
+              
+                  </div>
+            
+                  <div class="p-col-12 p-md-6 p-fluid">
+                    <label>Cidade: </label>
+                    <input pInputText type="text"
+                    [(ngModel)]="empresa.endereco.cidade"
+                    name="cidade"
+                    ngModel #cidade="ngModel" required minlength="5"
+                    >
+      
+                    <span *ngIf="cidade.hasError('required') && cidade.dirty"
+                    class="p-message p-message-error">
+                    Informe o cidade.
+                  </span>
+                  <span *ngIf="cidade.hasError('minlength') && cidade.dirty"
+                    class="p-message p-message-error">
+                    Mínimo de {{ cidade.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ cidade.errors?.minlength.actualLength }}
+                  </span>
+                  </div>
+            
+                  <div class="p-col-12 p-md-6 p-fluid">
+                    <label>Estado: </label>
+                    <input pInputText type="text"
+                    name="estado" [(ngModel)]="empresa.endereco.estado" 
+                     #estado="ngModel" required minlength="5"
+                    >
+      
+                    <span *ngIf="estado.hasError('required') && estado.dirty"
+                    class="p-message p-message-error">
+                    Informe o estado.
+                  </span>
+                  <span *ngIf="estado.hasError('minlength') && estado.dirty"
+                    class="p-message p-message-error">
+                    Mínimo de {{ estado.errors?.minlength.requiredLength }} caracteres. Você digitou apenas {{ estado.errors?.minlength.actualLength }}
+                  </span>
+                  </div>
+            
+                  <div class="p-col-12">
+                    <button pButton type="submit" label="Salvar"></button>
+                    <button pButton type="button" label="Voltar" (click)="voltar()" class="p-button-info"></button>
+                    <!-- <a href="javascript:;">Voltar para a pesquisa</a> -->
+                  </div>
 
 
 
