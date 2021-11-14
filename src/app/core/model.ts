@@ -37,5 +37,6 @@ export class Lancamento {
   valor?: number;
   observacao?: string;
   pessoa = new Pessoa();
+  empresa = new Empresa();
   categoria = new Categoria();
 }

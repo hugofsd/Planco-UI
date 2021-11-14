@@ -70,7 +70,7 @@ status(empresa: any): void {
 
   this.empresaServise.mudarStatus(empresa.codigo, novoStatus)
     .then(() => {
-      const acao = novoStatus ? 'ativada' : 'desativada';
+      const acao = novoStatus ? 'desativada' : 'ativada';
 
       empresa.ativo = novoStatus;
       this.messageService.add({ key: 'msg', severity: 'success', detail: `Empresa ${acao} com sucesso!` });

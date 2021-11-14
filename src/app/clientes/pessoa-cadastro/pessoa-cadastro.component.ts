@@ -35,7 +35,7 @@ export class PessoaCadastroComponent implements OnInit {
     this.codigoEdit = this.codigoPendencia;
 
     if(this.codigoPendencia){
-      this.carregarEmpresa(this.codigoPendencia);
+      this.buscarPorCodigo(this.codigoPendencia);
      }
 
   }
@@ -66,7 +66,7 @@ export class PessoaCadastroComponent implements OnInit {
       }); 
   }
 
-  carregarEmpresa(codigo: number){
+  buscarPorCodigo(codigo: number){
     this.pessoaService.buscarPorCodigo(codigo)
       .subscribe(pessoa => {
         this.pessoa = pessoa;

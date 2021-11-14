@@ -18,6 +18,8 @@
                 <p-selectButton  name="tipo" [options]="tipos" #tipo
                 [(ngModel)]="lancamento.tipo" ></p-selectButton>
             </div>
+
+            
  
 
             <div class="p-col-6 p-md-3 p-fluid">
@@ -35,6 +37,7 @@
                 <p-calendar dateFormat="dd/mm/yy" name="dataPagamento"
                 [(ngModel)]="lancamento.dataPagamento"></p-calendar>
             </div>
+
             
             <div class="p-col-12 p-md-9 p-fluid">
                 <label>Descrição</label>
@@ -64,14 +67,26 @@
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Categoria</label>
                 <p-dropdown [options]="categorias" placeholder="Selecione"
+                [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"
                 [(ngModel)]="lancamento.categoria.codigo" name="categoria"
                 #categoria [required]="true"
                 ></p-dropdown>
             </div>
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Pessoa</label>
-                <p-dropdown [options]="pessoas" placeholder="Selecione" name="pessoa"
-                [(ngModel)]="lancamento.pessoa.codigo"
+                <p-dropdown [options]="pessoas" 
+                optionDisabled="ativo"
+                placeholder="Selecione" name="pessoa"
+                [(ngModel)]="lancamento.pessoa.codigo" 
+                [filter]="true" #pessoa></p-dropdown>
+                <!-- com filtro de palavras -->
+            </div>
+            <div class="p-col-12 p-md-6 p-fluid">
+                <label>Empresa</label>
+                <p-dropdown [options]="empresas" 
+                optionDisabled="ativo"
+                placeholder="Selecione" name="empresa"
+                [(ngModel)]="lancamento.empresa.codigo" 
                 [filter]="true" #pessoa></p-dropdown>
                 <!-- com filtro de palavras -->
             </div>
@@ -82,9 +97,12 @@
             </div>
             <button pButton type="submit" label="Salvar" [disabled]="lancamentoForm.invalid"></button>
             <button pButton type="button" label="Voltar" (click)="pendenciaLista()" class="p-button-info"></button>
+           
+           
             <!-- <a href="javascript:;">Voltar para a pesquisa</a> -->
         </div>
     </p-card>
     </div>
 </form>
+<!-- <button (click)="conferirAtivo(lancamentoForm)"> Teste</button> -->
 </div>

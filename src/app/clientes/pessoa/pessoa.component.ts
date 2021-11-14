@@ -70,7 +70,7 @@ export class PessoaComponent implements OnInit {
 
     this.pessoaService.mudarStatus(pessoa.codigo, novoStatus)
       .then(() => {
-        const acao = novoStatus ? 'ativada' : 'desativada';
+        const acao = novoStatus ? 'desativada' : 'ativada';
 
         pessoa.ativo = novoStatus;
         this.messageService.add({ key: 'msg', severity: 'success', detail: `Pessoa ${acao} com sucesso!` });
