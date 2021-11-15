@@ -13,6 +13,7 @@ import { CardModule } from 'primeng/card';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { DividerModule } from 'primeng/divider';
 import { DialogModule } from 'primeng/dialog';
+import { PanelModule } from 'primeng/panel';
 
 
 
@@ -35,7 +36,8 @@ import { DialogModule } from 'primeng/dialog';
     DropdownModule,
     CardModule,
     DialogModule,
-    DividerModule
+    DividerModule,
+    PanelModule
   ],
   exports: [
     // CategoriasComponent,

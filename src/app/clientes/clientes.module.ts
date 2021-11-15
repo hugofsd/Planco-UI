@@ -13,6 +13,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { PanelModule } from 'primeng/panel';
 
 
 
@@ -34,6 +35,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     SelectButtonModule,
     DropdownModule,
     CardModule,
+    PanelModule,
 
     CurrencyMaskModule
   ],

@@ -206,7 +206,7 @@ export class LancamentosCadastroComponent implements OnInit {
         }
         //console.log(this.lancamento)
 
-     
+        this.pendenciaLista()
       },
       error => {
         this.messageService.add({ key: 'msg', severity: 'error', detail: 'Erro ao CADASTRAR pendência!' })

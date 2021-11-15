@@ -1,4 +1,4 @@
-<div class="containerTwo">
+<div class="containerCadastro">
 
     <form #lancamentoForm="ngForm" autocomplete="off" (ngSubmit)="salvar(lancamentoForm)">
     <div class="p-grid"
@@ -7,7 +7,7 @@
 
 
         <div class="p-col-12">
-            <H1>{{ editando ? 'Edição de' : 'Novo' }} Pendência</H1>
+            <H1>{{ editando ? 'Edição de' : 'Novo' }} Registros</H1>
         </div>
 
         <p-card>
@@ -90,9 +90,9 @@
                 [filter]="true" #pessoa></p-dropdown>
                 <!-- com filtro de palavras -->
             </div>
-            <div class="p-col-12 p-fluid">
+            <div class="p-col-12 p-md-6 p-fluid">
                 <label>Observação</label>
-                <textarea pInputTextarea rows="3"
+                <textarea pInputTextarea rows="1"
                 name="observacao" [(ngModel)]="lancamento.observacao"></textarea>
             </div>
             <button pButton type="submit" label="Salvar" [disabled]="lancamentoForm.invalid"></button>

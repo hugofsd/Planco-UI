@@ -5,6 +5,7 @@ import { Table } from 'primeng/table';
 import { PessoaFiltro, PessoasService } from 'src/app/clientes/pessoas.service';
 import { LancamentoFiltro, LancamentosService } from 'src/app/lancamentos/lancamentos.service';
 import { DashboardService } from '../dashboard.service';
+import {MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,9 @@ import { DashboardService } from '../dashboard.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  
+  items!: MenuItem[];
+  activeItem!: MenuItem;
   
   pieChartData: any;
 
@@ -23,6 +27,10 @@ export class DashboardComponent implements OnInit {
 
 
   filtro = new LancamentoFiltro()
+
+
+  mostrarFaturamento: boolean = false;
+  mostrarPizza: boolean = true;
 
   clienteChartData = {
     labels: ['Mensal', 'Educação', 'Lazer', 'Imprevistos'],
@@ -75,6 +83,32 @@ export class DashboardComponent implements OnInit {
 
    this.pesquisarPessoas();
 
+   this.items = [
+            {label: 'Dados por categoria', icon: 'pi pi-fw pi-home',
+          
+            command: (event) => {
+       
+          this.mostrarFaturamento = false;
+          this.mostrarPizza = true;
+          
+          }},
+            {label: 'Balanço do mês', icon: 'pi pi-fw  pi-file',
+            command: (event) => {
+       
+              this.mostrarPizza = false;
+              this.mostrarFaturamento = true;
+              
+          }},
+          
+          
+          
+        ];
+
+        this.activeItem = this.items[0];
+}
+
+muder(){
+  this.mostrarFaturamento = !this.mostrarFaturamento
 }
 
 dialogo(venda: any){
@@ -156,7 +190,7 @@ linha() {
           }, {
             label: 'Despesas',
             data: totaisDespesas,
-            borderColor: '#D62B00'
+            borderColor: '#DA70D6'
           }
         ]
       }

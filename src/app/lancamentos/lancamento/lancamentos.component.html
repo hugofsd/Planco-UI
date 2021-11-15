@@ -7,7 +7,7 @@
 <div class="p-grid">
    
     <div class="p-col-12">
-        <H1>Lançamentos financeiros</H1>
+        <H1>Registros financeiros</H1>
     </div>
 
     <!-- fluid: ocupar a class -->
@@ -47,42 +47,41 @@
 
 </form>
  
-
+<p-panel>
 <div class="p-grid">
     <div class="p-col-12">
         
-        <p-table  [value]="dados" [paginator]="true" [rows]="1"
+
+        
+        <p-table  [value]="dados" [paginator]="true" [rows]="2"
         [responsive]="true" #tabela>
 
-        <ng-template pTemplate="caption">
+        <!-- <ng-template pTemplate="caption">
             <div class="p-d-flex">
-              
-                <button type="button" pButton pRipple icon="pi pi-file-excel"  class="p-button-success p-mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
-                <button type="button" pButton pRipple icon="pi pi-file-pdf" class="p-button-warning p-mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
-
+                <button heade type="button" pButton pRipple icon="pi pi-file-excel"  class="p-button-success p-mr-2"  pTooltip="EXPORTAR PARA XLS" tooltipPosition="bottom"></button>
             </div>
-        </ng-template>
+        </ng-template> -->
             <ng-template pTemplate="header">
                 <tr>
-                    <th>Cod:</th>
-                    <th>Pessoa</th>
-                    <th>Descrição</th>
-                    <th class="col-data-header">Vencimento</th>
-                    <th  class="col-data-header">Pagamento</th>
-                    <th class="col-valor-header">Valor</th>
-                    <th class="col-acoes-header"></th>
+                    <th style="text-align: center;" >Cod:</th>
+                    <th style="text-align: center;">Pessoa</th>
+                    <th style="text-align: center;">Descrição</th>
+                    <th style="text-align: center;" class="col-data-header">Vencimento</th>
+                    <th style="text-align: center;"  class="col-data-header">Pagamento</th>
+                    <th style="text-align: center;" class="col-valor-header">Valor</th>
+                    <th style="text-align: center;" class="col-acoes-header"></th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-lancamento >
+            <ng-template pTemplate="body" let-lancamento>
                 <!-- *ngIf="lancamento.categoria.codigo === 26" -->
                 <tr  >
-                    <td class="col-acoes">#{{lancamento.codigo}}</td>
-                    <td>{{ lancamento.pessoa.nome }}</td>
-                    <td>{{ lancamento.descricao }}</td>
-                    <td class="col-data-content">{{ lancamento.dataVencimento }}</td>
-                    <td  [hidden]="lancamento.dataPagamento === null"class="col-data-content">{{ lancamento.dataPagamento }}</td>
-                    <td class="col-valor" [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">{{ lancamento.valor }}</td>
-                    <td class="col-acoes">
+                    <td style="text-align: center; "class="col-acoes">#{{lancamento.codigo}}</td>
+                    <td  style="text-align: center; ">{{ lancamento.pessoa.nome }}</td>
+                    <td  style="text-align: center; ">{{ lancamento.descricao }}</td>
+                    <td  style="text-align: center; " class="col-data-content">{{ lancamento.dataVencimento }}</td>
+                    <td  style="text-align: center; " [hidden]="lancamento.dataPagamento === null"class="col-data-content">{{ lancamento.dataPagamento }}</td>
+                    <td  style="text-align: center; " class="col-valor" [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">{{ lancamento.valor }}</td>
+                    <td  style="text-align: center; " class="col-acoes">
                         <button pButton icon="pi pi-pencil"  pTooltip="Editar" tooltipPosition="top"
                         (click)="pendenciaCadastro(lancamento.codigo)"
                         ></button>
@@ -100,6 +99,7 @@
                 </tr>
               </ng-template>
         </p-table>
+        
     </div>
     <div class="p-col-3  p-fluid">
         <button pButton (click)="pesquisar()" label="PESQUISAR"></button>
@@ -113,6 +113,6 @@
 </div>
 
 
-
+</p-panel>
 
 </div>

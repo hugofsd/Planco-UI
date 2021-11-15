@@ -12,6 +12,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
+import { PanelModule } from 'primeng/panel';
 
 
 
@@ -34,6 +35,7 @@ import { CardModule } from 'primeng/card';
     SelectButtonModule,
     DropdownModule,
     CardModule,
+    PanelModule
   ],
   exports: [
     EmpresasComponent,
