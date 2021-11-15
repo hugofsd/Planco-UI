@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CategoriasComponent } from './categoria/categorias/categorias.component';
 import { PessoaCadastroComponent } from './clientes/pessoa-cadastro/pessoa-cadastro.component';
 import { PessoaComponent } from './clientes/pessoa/pessoa.component';
 import { PageNaoEncontradaComponent } from './core/page-nao-encontrada.component';
@@ -52,6 +53,18 @@ const routes: Routes = [
 
   
   // ----------------------------------------------
+
+  // -----------------Categorias--------------------
+
+  {path: 'categorias', component: CategoriasComponent },
+
+  //{path: 'categoriasCadastro', component: CategoriaCadastroComponent },
+
+  //{path: 'categoriasCadastro/:codigo', component: CategoriaCadastroComponent },
+
+
+ 
+    // ----------------------------------------------
 
   {path: 'novaVenda', component: NovaVendaComponent },
 

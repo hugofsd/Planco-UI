@@ -59,7 +59,7 @@ export class PessoaCadastroComponent implements OnInit {
       .subscribe(() => {
         form.reset();
         this.pessoa = new Pessoa();
-        this.messageService.add({key: 'msg', severity: 'success', detail: 'Cliente cadastrado com sucesso com sucesso!' });
+        this.messageService.add({key: 'msg', severity: 'success', detail: 'Cliente cadastrado com sucesso!' });
       },
       error => {
         this.messageService.add({ key: 'msg', severity: 'error', detail: 'Erro ao cadastrar cliente!' })

@@ -20,6 +20,8 @@ import {ButtonModule} from 'primeng/button';
 import { DashboardModule } from './dashboard/dashboard.module';
 import {PanelModule} from 'primeng/panel';
 import { EmpresaModule } from './empresa/empresa.module';
+import { CategoriasComponent } from './categoria/categorias/categorias.component';
+import { CategoriasModule } from './categoria/categorias.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { EmpresaModule } from './empresa/empresa.module';
     ClientesModule,
     CoreModule,
     VendasModule,
+    CategoriasModule,
     
     
     // outros imports

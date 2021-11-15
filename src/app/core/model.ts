@@ -26,6 +26,7 @@ export class Empresa {
 
 export class Categoria {
   codigo?: number;
+  name?: string;
 }
 
 export class Lancamento {

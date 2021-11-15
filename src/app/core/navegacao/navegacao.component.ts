@@ -52,4 +52,7 @@ export class NavegacaoComponent implements OnInit {
     this.router.navigate(['empresaCadastro']);
   }
 
+  categorias(){
+    this.router.navigate(['categorias'])
+  }
 }
