@@ -54,6 +54,8 @@ export class DashboardComponent implements OnInit {
 
   display: boolean = false;
 
+  dados: any;
+
   constructor(
   private dashboardService: DashboardService,
   private lancamentoService: LancamentosService,
@@ -105,6 +107,10 @@ pesquisar (){
   console.log(this.filtro);
   this.lancamentoService.pesquisar(this.filtro).subscribe(data  =>{
     this.lancamentos = data.content;
+
+    this.dados = this.lancamentos.slice(0).reverse()
+
+
 //   console.log(this.lancamentos);
   })
 }

@@ -8,23 +8,32 @@
         <h1>Bem-vindo</h1>
       </div>
 
-      <div class="p-col-12 p-lg-6">
-        <p-panel header="Balanço financeiro do mês: ">
-          <p-chart type="line" [data]="lineChartData"></p-chart>
-        </p-panel>
-      </div>
-  
+
+       <div class="p-col-12 p-lg-5">
+        <img  src="../../../assets/ilustracaohome.svg" width="300px" >
+       </div>
       <div class="p-col-12 p-lg-6">
         <p-panel header="Dados gerais por categoria: ">
           <p-chart type="pie" [data]="pieChartData"></p-chart>
         </p-panel>
       </div>
+      <div class="p-col-12 p-lg-6"  
+      >
+        <p-panel style="height: 50px;" header="Balanço do mês, lucro de {{lucro}} reais! ">
+          <p-chart type="line" [data]="lineChartData"></p-chart>
+        </p-panel>
+      </div>
+  
+      
 
-      <div class="p-col-12 p-lg-7">
-        <p-panel header="Resumo de cadastros:">
+
+     
+   
+      <div class="p-col-12 p-lg-6">
+        <p-panel header="Ultimos cadastros financeiros:">
          
   
-      <p-table  [value]="lancamentos" [paginator]="true" [rows]="1"
+      <p-table  [value]="dados" [paginator]="true" [rows]="1"
         [responsive]="true" #ultimasVendas > 
             <ng-template pTemplate="header">
                 <tr>
@@ -63,11 +72,8 @@
     </div>
 
 
-    <div class="p-col-12 p-lg-5">
-      <p-panel header="Lucro do mês:">
-       <p  class="lucro"  [style.color]="lucro >= 0 ? '#6959CD' : 'red'">{{lucro}}</p> 
-      </p-panel>
-    </div>
+   
+
     </div>
 
 
